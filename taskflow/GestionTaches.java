@@ -15,7 +15,7 @@ public class GestionTaches {
         if (titre == null || titre.trim().isEmpty()) {
             return null;
         }
-        Tache tache = new Tache(prochainId++, titre.trim(), priorite, echeance);
+        Tache tache = new Tache(prochainId++, titre.trim().replace('\t', ' '), priorite, echeance);
         taches.add(tache);
         return tache;
     }
@@ -66,5 +66,18 @@ public class GestionTaches {
     /** Retire l'échéance. Retourne false si l'identifiant est inconnu. */
     public boolean retirerEcheance(int id) {
         return modifierEcheance(id, null);
+    }
+
+    /** Remplace les tâches par celles chargées et calcule le prochain identifiant. */
+    public void charger(List<Tache> chargees) {
+        taches.clear();
+        taches.addAll(chargees);
+        int max = 0;
+        for (Tache t : taches) {
+            if (t.getId() > max) {
+                max = t.getId();
+            }
+        }
+        prochainId = max + 1;
     }
 }
