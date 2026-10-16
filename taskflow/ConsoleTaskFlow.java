@@ -1,9 +1,14 @@
 package taskflow;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
+import java.util.List;
 import java.util.Scanner;
 
 /** Interface console de TaskFlow (menu, saisies et affichages). */
@@ -11,14 +16,18 @@ public class ConsoleTaskFlow {
     private static final DateTimeFormatter FORMAT_DATE =
             DateTimeFormatter.ofPattern("uuuu-MM-dd").withResolverStyle(ResolverStyle.STRICT);
 
+    private static final Path FICHIER = Paths.get("taches.txt");
+
+    private final StockageTaches stockage = new StockageTaches();
     private final Scanner scanner = new Scanner(System.in);
     private final GestionTaches gestion = new GestionTaches();
 
     public void demarrer() {
         System.out.println("TASKFLOW — Gestion des tâches");
         System.out.println();
-        System.out.println("Aucun fichier de données trouvé.");
-        System.out.println("L'application démarre avec une liste vide.");
+        if (!chargerAuDemarrage()) {
+            return;
+        }
 
         boolean continuer = true;
         while (continuer) {
@@ -30,9 +39,7 @@ public class ConsoleTaskFlow {
                 case "3": terminerTache(); break;
                 case "4": modifierPriorite(); break;
                 case "5": gererEcheance(); break;
-                case "6":
-                    System.out.println("\nCette fonctionnalité n'est pas encore disponible.");
-                    break;
+                case "6": sauvegarder(); break;
                 case "0":
                     System.out.println("\nFermeture de TaskFlow. À bientôt.");
                     continuer = false;
@@ -40,6 +47,37 @@ public class ConsoleTaskFlow {
                 default:
                     System.out.println("\nChoix invalide. Veuillez entrer un nombre du menu.");
             }
+        }
+    }
+
+    private boolean chargerAuDemarrage() {
+        if (!Files.exists(FICHIER)) {
+            System.out.println("Aucun fichier de données trouvé.");
+            System.out.println("L'application démarre avec une liste vide.");
+            return true;
+        }
+        try {
+            List<Tache> chargees = stockage.charger(FICHIER);
+            gestion.charger(chargees);
+            System.out.println(chargees.size() + " tâche(s) chargée(s) depuis " + FICHIER + ".");
+            return true;
+        } catch (StockageTaches.FormatInvalideException | IOException e) {
+            System.out.println("Le fichier " + FICHIER + " est illisible ou mal formé.");
+            System.out.println("Détail : " + e.getMessage());
+            System.out.println("Le fichier n'a pas été modifié. Corrigez-le ou supprimez-le, puis relancez TaskFlow.");
+            return false;
+        }
+    }
+
+    private void sauvegarder() {
+        try {
+            stockage.sauvegarder(FICHIER, gestion.lister());
+            System.out.println("\nSauvegarde réussie : " + gestion.lister().size()
+                    + " tâche(s) enregistrée(s) dans " + FICHIER + ".");
+        } catch (IOException e) {
+            System.out.println("\nÉchec de la sauvegarde : impossible d'écrire dans " + FICHIER + ".");
+            System.out.println("Cause possible : fichier en lecture seule ou dossier protégé.");
+            System.out.println("Vos données n'ont pas été enregistrées.");
         }
     }
 
@@ -63,7 +101,7 @@ public class ConsoleTaskFlow {
             return;
         }
 
-        System.out.println("\nPriorité : Basse, Normale ou Élevée");
+        System.out.println("\nPriorité : Basse (1), Normale (2) ou Élevée (3)");
         System.out.println("Appuyez sur Entrée pour choisir Normale.");
         Priorite priorite = null;
         while (priorite == null) {
@@ -73,7 +111,7 @@ public class ConsoleTaskFlow {
             } else {
                 priorite = Priorite.depuisTexte(saisie);
                 if (priorite == null) {
-                    System.out.println("Priorité invalide. Choisissez Basse, Normale ou Élevée.");
+                    System.out.println("Priorité invalide. Choisissez Basse, Normale ou Élevée (ou 1, 2, 3).");
                 }
             }
         }
@@ -149,7 +187,7 @@ public class ConsoleTaskFlow {
         }
         System.out.println("\nPriorité actuelle : " + t.getPriorite().getLibelle());
         Priorite nouvelle = Priorite.depuisTexte(
-                lire("Nouvelle priorité (Basse, Normale ou Élevée) : "));
+                lire("Nouvelle priorité (Basse, Normale, Élevée ou 1, 2, 3) : "));
         if (nouvelle == null) {
             System.out.println("\nPriorité invalide. La priorité actuelle est conservée.");
             return;
