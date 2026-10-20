@@ -21,6 +21,7 @@ public class ConsoleTaskFlow {
     private final StockageTaches stockage = new StockageTaches();
     private final Scanner scanner = new Scanner(System.in);
     private final GestionTaches gestion = new GestionTaches();
+    private boolean entreeTerminee = false; // vrai quand il n'y a plus rien à lire
 
     public void demarrer() {
         System.out.println("TASKFLOW — Gestion des tâches");
@@ -96,8 +97,12 @@ public class ConsoleTaskFlow {
     private void ajouterTache() {
         System.out.println("\nAJOUTER UNE TÂCHE\n");
         String titre = lire("Titre : ");
-        if (titre.trim().isEmpty()) {
-            System.out.println("\nLe titre ne peut pas être vide. Aucune tâche n'a été ajoutée.");
+        while (titre.trim().isEmpty() && !entreeTerminee) {
+            System.out.println("\nLe titre ne peut pas être vide.");
+            titre = lire("Entrez un titre (ou « annuler » pour abandonner) : ");
+        }
+        if (entreeTerminee || titre.trim().equalsIgnoreCase("annuler")) {
+            annulerAjout();
             return;
         }
 
@@ -106,6 +111,10 @@ public class ConsoleTaskFlow {
         Priorite priorite = null;
         while (priorite == null) {
             String saisie = lire("Votre priorité : ");
+            if (entreeTerminee) {
+                annulerAjout();
+                return;
+            }
             if (saisie.trim().isEmpty()) {
                 priorite = Priorite.NORMALE;
             } else {
@@ -122,6 +131,10 @@ public class ConsoleTaskFlow {
         boolean valide = false;
         while (!valide) {
             String saisie = lire("Votre échéance : ").trim();
+            if (entreeTerminee) {
+                annulerAjout();
+                return;
+            }
             if (saisie.isEmpty()) {
                 valide = true;
             } else {
@@ -141,6 +154,10 @@ public class ConsoleTaskFlow {
         System.out.println("Priorité    : " + t.getPriorite().getLibelle());
         System.out.println("Échéance    : " + t.getEcheanceTexte());
         System.out.println("Statut      : " + t.getStatut().getLibelle());
+    }
+
+    private void annulerAjout() {
+        System.out.println("\nAjout annulé. Aucune tâche n'a été ajoutée.");
     }
 
     private void afficherTaches() {
@@ -260,7 +277,8 @@ public class ConsoleTaskFlow {
     private String lire(String invite) {
         System.out.print(invite);
         if (!scanner.hasNextLine()) {
-            return "0"; // fin de l'entrée : quitter proprement
+            entreeTerminee = true;
+            return "0"; // fin de l'entrée : le menu principal quitte proprement
         }
         return scanner.nextLine();
     }
