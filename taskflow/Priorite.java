@@ -18,14 +18,19 @@ public enum Priorite {
         return libelle;
     }
 
-    /** Convertit une saisie (sans tenir compte de la casse ni des accents). Retourne null si invalide. */
+    /**
+     * Convertit une saisie (sans tenir compte de la casse ni des accents).
+     * Accepte aussi les numéros du menu : 1 = Basse, 2 = Normale, 3 = Élevée.
+     * Retourne null si invalide.
+     */
     public static Priorite depuisTexte(String texte) {
         if (texte == null) {
             return null;
         }
         String saisie = normaliser(texte);
         for (Priorite p : values()) {
-            if (normaliser(p.libelle).equals(saisie)) {
+            String numero = String.valueOf(p.ordinal() + 1);
+            if (normaliser(p.libelle).equals(saisie) || numero.equals(saisie)) {
                 return p;
             }
         }
