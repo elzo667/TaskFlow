@@ -10,7 +10,7 @@ Projet réalisé dans le cadre du cours INF1763 — Mini-projet 1.
 |---|---|
 | Elhadji N Diagne | [@elzo667](https://github.com/elzo667) |
 | Laeticia Hammi | [@Laeticiahammi](https://github.com/Laeticiahammi) |
-| Jael Mulamba Llunga |[@JJael] | 
+| Jael Mulamba Ilunga | [@JJael](https://github.com/JJael) | 
 
 L'organisation de l'équipe, le backlog, la définition de terminé et les itérations sont décrits dans [docs/organisation.md](docs/organisation.md).
 Les vérifications manuelles sont consignées dans [docs/verification.md](docs/verification.md).
