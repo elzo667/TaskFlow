@@ -85,6 +85,8 @@ Total : 34 points de récits (14 en itération 1, 20 en itération 2).
 
 ## Suivi du travail
 
+Le travail est suivi dans le tableau GitHub Projects [TaskFlow - Suivi MP1](https://github.com/users/JJael/projects/1). Il contient les colonnes À faire, En cours, À vérifier et Terminé. Chaque carte porte un champ Catégorie (Récit, Technique ou Anomalie) et un champ Itération.
+
 Les cartes représentent des récits utilisateurs (US-xx) et des tâches techniques (T-xx), tous créés comme Issues du dépôt.
 
 ### Règles de passage
@@ -138,7 +140,7 @@ Un élément bloqué reste dans sa colonne avec le label "bloqué" et un comment
 | Les PR #25 et #26 regroupent chacune plusieurs récits (jusqu'à neuf), et US-06 à US-09 ont été livrés plus tôt que prévu sans mise à jour des labels d'itération. | Une PR par récit ou par anomalie, comme pour #28 et #30, pour faciliter la revue. Les labels d'itération sont gardés tels que planifiés, et l'écart est noté ici. |
 | Le README contenait les règles du tableau de suivi au lieu des informations pour compiler et exécuter. | Le README est réécrit selon la section 9.2 de l'énoncé. Les règles de suivi sont déplacées dans ce document. |
 | Pendant les vérifications, une échéance passée est acceptée sans avertissement. | Le comportement demandé par l'énoncé est conservé. Une confirmation à la saisie et une mention « en retard » sont proposées pour une prochaine version (voir [verification.md](verification.md)). |
-| Aucun tableau GitHub Projects n'avait été créé. | Prise en charge dans T-04 (#21). |
+| Aucun tableau GitHub Projects n'avait été créé. | Tableau créé le 2026-10-27 (T-04, [#21](https://github.com/elzo667/TaskFlow/issues/21)), avec les 25 Issues placées selon leur état réel. |
 
 ## Contributions
 
@@ -146,4 +148,4 @@ Un élément bloqué reste dans sa colonne avec le label "bloqué" et un comment
 |---|---|---|---|---|
 | Elhadji N Diagne | Création du backlog (US-01 à US-16, T-01 à T-07). Structure du code et récits US-01 à US-16. Coordination et fusion des PR. | [#2](https://github.com/elzo667/TaskFlow/issues/2) à [#24](https://github.com/elzo667/TaskFlow/issues/24) | [#25](https://github.com/elzo667/TaskFlow/pull/25), [#26](https://github.com/elzo667/TaskFlow/pull/26) | Aucune revue formelle. A fusionné [#28](https://github.com/elzo667/TaskFlow/pull/28) et [#30](https://github.com/elzo667/TaskFlow/pull/30) |
 | Laeticia Hammi | Revue de la PR #26 et signalement de deux anomalies. Correction des priorités 1, 2, 3. Correction de la saisie du titre et de la fin d'entrée. README, tableau de vérification (12 scénarios et données de test), ce document. | [#27](https://github.com/elzo667/TaskFlow/issues/27), [#29](https://github.com/elzo667/TaskFlow/issues/29), [#20](https://github.com/elzo667/TaskFlow/issues/20), [#23](https://github.com/elzo667/TaskFlow/issues/23), [#24](https://github.com/elzo667/TaskFlow/issues/24) | [#28](https://github.com/elzo667/TaskFlow/pull/28), [#30](https://github.com/elzo667/TaskFlow/pull/30), [#31](https://github.com/elzo667/TaskFlow/pull/31), [#32](https://github.com/elzo667/TaskFlow/pull/32) | Commentaire de revue sur [#26](https://github.com/elzo667/TaskFlow/pull/26) |
-| Jael Mulamba Ilunga | Assigné aux éléments restants : accès au dépôt, tableau GitHub Projects, définition de terminé (en cours au 2026-10-20). | [#18](https://github.com/elzo667/TaskFlow/issues/18), [#21](https://github.com/elzo667/TaskFlow/issues/21), [#22](https://github.com/elzo667/TaskFlow/issues/22) | | |
+| Jael Mulamba Ilunga | Règles de contribution et .gitignore (T-01). Tableau GitHub Projects avec ses colonnes et ses champs (T-04). Définition de terminé précisée et modèle de pull request (T-05). | [#18](https://github.com/elzo667/TaskFlow/issues/18), [#21](https://github.com/elzo667/TaskFlow/issues/21), [#22](https://github.com/elzo667/TaskFlow/issues/22) | [#34](https://github.com/elzo667/TaskFlow/pull/34), [#35](https://github.com/elzo667/TaskFlow/pull/35) et la PR de T-04 | |

@@ -14,6 +14,7 @@ Projet réalisé dans le cadre du cours INF1763 — Mini-projet 1.
 
 L'organisation de l'équipe, le backlog, la définition de terminé et les itérations sont décrits dans [docs/organisation.md](docs/organisation.md).
 Les vérifications manuelles sont consignées dans [docs/verification.md](docs/verification.md).
+Le suivi du travail se fait dans le tableau GitHub Projects [TaskFlow - Suivi MP1](https://github.com/users/JJael/projects/1) (accès réservé à l'équipe et à l'enseignant).
 
 ## Fonctionnalités
 
