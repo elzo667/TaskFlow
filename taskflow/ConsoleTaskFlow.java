@@ -41,6 +41,7 @@ public class ConsoleTaskFlow {
                 case "4": modifierPriorite(); break;
                 case "5": gererEcheance(); break;
                 case "6": sauvegarder(); break;
+                case "8": rechercherParTitre(); break;
                 case "0":
                     System.out.println("\nFermeture de TaskFlow. À bientôt.");
                     continuer = false;
@@ -90,6 +91,7 @@ public class ConsoleTaskFlow {
         System.out.println("4. Modifier la priorité d'une tâche");
         System.out.println("5. Gérer l'échéance d'une tâche");
         System.out.println("6. Sauvegarder les données");
+        System.out.println("8. Rechercher une tâche par un mot du titre");
         System.out.println("0. Quitter");
         System.out.println();
     }
@@ -172,6 +174,34 @@ public class ConsoleTaskFlow {
                     t.getPriorite().getLibelle(), t.getEcheanceTexte(), t.getStatut().getLibelle());
         }
         System.out.println("\nNombre de tâches : " + gestion.lister().size());
+    }
+
+    private void rechercherParTitre() {
+        if (gestion.lister().isEmpty()) {
+            System.out.println("\nAucune tâche à afficher.");
+            return;
+        }
+        System.out.println("\nRECHERCHER UNE TÂCHE PAR UN MOT DU TITRE\n");
+        String mot = lire("Mot à rechercher : ");
+        if (entreeTerminee) {
+            return;
+        }
+        if (mot.trim().isEmpty()) {
+            System.out.println("\nLe mot à rechercher ne peut pas être vide.");
+            return;
+        }
+        List<Tache> resultats = gestion.rechercherParTitre(mot);
+        if (resultats.isEmpty()) {
+            System.out.println("\nAucune tâche ne contient « " + mot.trim() + " » dans son titre.");
+            return;
+        }
+        System.out.println("\nRÉSULTATS DE LA RECHERCHE « " + mot.trim() + " »\n");
+        System.out.printf("%-6s %-55s %-10s %-13s %s%n", "ID", "Titre", "Priorité", "Échéance", "Statut");
+        for (Tache t : resultats) {
+            System.out.printf("%-6d %-55s %-10s %-13s %s%n", t.getId(), t.getTitre(),
+                    t.getPriorite().getLibelle(), t.getEcheanceTexte(), t.getStatut().getLibelle());
+        }
+        System.out.println("\nNombre de résultats : " + resultats.size());
     }
 
     private void terminerTache() {
