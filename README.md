@@ -24,6 +24,7 @@ Le suivi du travail se fait dans le tableau GitHub Projects [TaskFlow - Suivi MP
 4. **Modifier la priorité** : Basse, Normale ou Élevée (saisie par le mot ou par le numéro 1, 2, 3). Une valeur invalide laisse la priorité inchangée.
 5. **Gérer l'échéance** : définir, modifier ou retirer. Une date au mauvais format ou impossible (ex. `2026-02-30`) est refusée.
 6. **Sauvegarder** les données dans un fichier local. Elles sont rechargées automatiquement au démarrage suivant.
+8. **Rechercher une tâche par un mot du titre** : sans tenir compte des majuscules, mêmes colonnes que l'option 2, avec le nombre de résultats. Un mot vide est refusé. Message explicite si la liste est vide ou si aucune tâche ne correspond.
 0. **Quitter** l'application.
 
 ## Prérequis
