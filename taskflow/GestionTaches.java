@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 /** Logique de gestion des tâches (sans entrée/sortie console). */
 public class GestionTaches {
@@ -22,6 +23,18 @@ public class GestionTaches {
 
     public List<Tache> lister() {
         return Collections.unmodifiableList(taches);
+    }
+
+    /** Retourne les tâches dont le titre contient le mot, sans tenir compte des majuscules. */
+    public List<Tache> rechercherParTitre(String mot) {
+        String motMinuscule = mot.trim().toLowerCase(Locale.ROOT);
+        List<Tache> resultats = new ArrayList<>();
+        for (Tache t : taches) {
+            if (t.getTitre().toLowerCase(Locale.ROOT).contains(motMinuscule)) {
+                resultats.add(t);
+            }
+        }
+        return resultats;
     }
 
     public Tache trouver(int id) {
