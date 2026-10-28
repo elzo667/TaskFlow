@@ -12,7 +12,7 @@ Cette première version (mini-projet 1) est une application Java en ligne de com
 |---|---|---|
 | Elhadji N Diagne | [@elzo667](https://github.com/elzo667) | Coordinateur, développement, propriétaire du dépôt |
 | Laeticia Hammi | [@Laeticiahammi](https://github.com/Laeticiahammi) | Développement, vérifications, documentation |
-| Jael Mulamba Ilunga | [@JJael](https://github.com/JJael) | Organisation du dépôt et du suivi |
+| Jael Mulamba Ilunga | [@JJael](https://github.com/JJael) | Organisation du dépôt et du suivi, développement |
 
 L'équipe compte 3 membres (toutes les équipes étaient complètes).
 
@@ -48,6 +48,7 @@ Le backlog est tenu dans les [Issues GitHub](https://github.com/elzo667/TaskFlow
 | US-13 Démarrer sans fichier de données | [#14](https://github.com/elzo667/TaskFlow/issues/14) | 13 | 1 | 2 |
 | US-14 Être averti d'un fichier illisible ou mal formé | [#15](https://github.com/elzo667/TaskFlow/issues/15) | 14 | 3 | 2 |
 | US-15 Être averti d'un échec de sauvegarde | [#16](https://github.com/elzo667/TaskFlow/issues/16) | 15 | 2 | 2 |
+| US-18 Afficher seulement les tâches à faire | à venir | 18 | 1 | 2 |
 
 ### Tâches techniques et anomalies
 
@@ -63,7 +64,7 @@ Le backlog est tenu dans les [Issues GitHub](https://github.com/elzo667/TaskFlow
 | Anomalie : priorités 1, 2, 3 refusées | [#27](https://github.com/elzo667/TaskFlow/issues/27) | — |
 | Anomalie : titre vide non corrigeable, boucle en fin d'entrée | [#29](https://github.com/elzo667/TaskFlow/issues/29) | — |
 
-Aucune fonctionnalité hors énoncé n'a été ajoutée.
+Deux fonctionnalités hors énoncé ont été ajoutées : US-18 (afficher seulement les tâches à faire) et US-19 (rechercher une tâche par un mot du titre). Elles ne changent pas le format du fichier `taches.txt`.
 
 ### Choix de priorité
 
@@ -141,6 +142,7 @@ Un élément bloqué reste dans sa colonne avec le label "bloqué" et un comment
 | Le README contenait les règles du tableau de suivi au lieu des informations pour compiler et exécuter. | Le README est réécrit selon la section 9.2 de l'énoncé. Les règles de suivi sont déplacées dans ce document. |
 | Pendant les vérifications, une échéance passée est acceptée sans avertissement. | Le comportement demandé par l'énoncé est conservé. Une confirmation à la saisie et une mention « en retard » sont proposées pour une prochaine version (voir [verification.md](verification.md)). |
 | Aucun tableau GitHub Projects n'avait été créé. | Tableau créé le 2026-10-27 (T-04, [#21](https://github.com/elzo667/TaskFlow/issues/21)), avec les 25 Issues placées selon leur état réel. |
+| La section 7.5 de l'énoncé demande 2 récits codés par membre, et Jael n'en avait codé aucun. | Ajout de US-18 et US-19 au backlog, codés par Jael, avec l'accord de l'équipe. |
 
 ## Contributions
 
@@ -148,4 +150,4 @@ Un élément bloqué reste dans sa colonne avec le label "bloqué" et un comment
 |---|---|---|---|---|
 | Elhadji N Diagne | Création du backlog (US-01 à US-16, T-01 à T-07). Structure du code et récits US-01 à US-16. Coordination et fusion des PR. | [#2](https://github.com/elzo667/TaskFlow/issues/2) à [#24](https://github.com/elzo667/TaskFlow/issues/24) | [#25](https://github.com/elzo667/TaskFlow/pull/25), [#26](https://github.com/elzo667/TaskFlow/pull/26) | Aucune revue formelle. A fusionné [#28](https://github.com/elzo667/TaskFlow/pull/28) et [#30](https://github.com/elzo667/TaskFlow/pull/30) |
 | Laeticia Hammi | Revue de la PR #26 et signalement de deux anomalies. Correction des priorités 1, 2, 3. Correction de la saisie du titre et de la fin d'entrée. README, tableau de vérification (12 scénarios et données de test), ce document. | [#27](https://github.com/elzo667/TaskFlow/issues/27), [#29](https://github.com/elzo667/TaskFlow/issues/29), [#20](https://github.com/elzo667/TaskFlow/issues/20), [#23](https://github.com/elzo667/TaskFlow/issues/23), [#24](https://github.com/elzo667/TaskFlow/issues/24) | [#28](https://github.com/elzo667/TaskFlow/pull/28), [#30](https://github.com/elzo667/TaskFlow/pull/30), [#31](https://github.com/elzo667/TaskFlow/pull/31), [#32](https://github.com/elzo667/TaskFlow/pull/32) | Commentaire de revue sur [#26](https://github.com/elzo667/TaskFlow/pull/26) |
-| Jael Mulamba Ilunga | Règles de contribution et .gitignore (T-01). Tableau GitHub Projects avec ses colonnes et ses champs (T-04). Définition de terminé précisée et modèle de pull request (T-05). | [#18](https://github.com/elzo667/TaskFlow/issues/18), [#21](https://github.com/elzo667/TaskFlow/issues/21), [#22](https://github.com/elzo667/TaskFlow/issues/22) | [#34](https://github.com/elzo667/TaskFlow/pull/34), [#35](https://github.com/elzo667/TaskFlow/pull/35) et la PR de T-04 | |
+| Jael Mulamba Ilunga | Règles de contribution et .gitignore (T-01). Tableau GitHub Projects avec ses colonnes et ses champs (T-04). Définition de terminé précisée et modèle de pull request (T-05). Récit US-18 (afficher seulement les tâches à faire). | [#18](https://github.com/elzo667/TaskFlow/issues/18), [#21](https://github.com/elzo667/TaskFlow/issues/21), [#22](https://github.com/elzo667/TaskFlow/issues/22) | [#34](https://github.com/elzo667/TaskFlow/pull/34), [#35](https://github.com/elzo667/TaskFlow/pull/35) et la PR de T-04 | |
