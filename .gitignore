@@ -24,3 +24,9 @@ hs_err_pid*
 replay_pid*
 out/
 taches.txt
+# IDE et système
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
