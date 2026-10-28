@@ -94,12 +94,17 @@ Les cartes représentent des récits utilisateurs (US-xx) et des tâches techniq
 - Un élément refusé en revue retourne à En cours.
 
 ### Définition de terminé
-- Les critères d'acceptation sont satisfaits.
-- Les scénarios de vérification pertinents sont exécutés et consignés.
-- Le code est fusionné dans main par pull request.
-- Un autre membre a relu et commenté la PR en précisant ce qui a été relu ou essayé.
-- README et documentation sont mis à jour si nécessaire.
-- L'Issue est fermée et la carte est dans Terminé.
+Un élément (récit, tâche technique ou anomalie) passe dans « Terminé » seulement si toutes ces conditions sont vraies :
+
+1. **Critères d'acceptation** : chaque critère de l'Issue est satisfait et coché dans la PR.
+2. **Vérifications** : le code compile avec la commande du README, et les scénarios concernés de verification.md ont été exécutés et consignés. Pour une tâche de documentation ou de configuration : rendu vérifié sur GitHub.
+3. **Revue** : un autre membre a approuvé la PR en précisant ce qu'il a relu ou essayé, et les conversations sont résolues.
+4. **Intégration** : la PR est fusionnée dans main, et main compile et démarre encore après la fusion.
+5. **Documentation** : README, organisation.md ou verification.md sont à jour si une commande, un comportement, le format du fichier ou l'organisation change.
+6. **Propreté** : pas de code de débogage, de code commenté inutile, de fichier généré ni de donnée réelle.
+7. **Suivi** : l'Issue est fermée et sa carte est dans « Terminé ».
+
+Ces conditions sont reprises sous forme de cases à cocher dans le modèle de pull request (`.github/pull_request_template.md`).
 
 ### Blocages
 Un élément bloqué reste dans sa colonne avec le label "bloqué" et un commentaire expliquant la cause.
