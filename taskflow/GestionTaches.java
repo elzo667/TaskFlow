@@ -24,6 +24,17 @@ public class GestionTaches {
         return Collections.unmodifiableList(taches);
     }
 
+    /** Retourne les tâches au statut À faire, dans l'ordre de la liste. */
+    public List<Tache> listerAFaire() {
+        List<Tache> aFaire = new ArrayList<>();
+        for (Tache t : taches) {
+            if (t.getStatut() == Statut.A_FAIRE) {
+                aFaire.add(t);
+            }
+        }
+        return aFaire;
+    }
+
     public Tache trouver(int id) {
         for (Tache t : taches) {
             if (t.getId() == id) {
