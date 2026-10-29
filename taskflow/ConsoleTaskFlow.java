@@ -41,6 +41,7 @@ public class ConsoleTaskFlow {
                 case "4": modifierPriorite(); break;
                 case "5": gererEcheance(); break;
                 case "6": sauvegarder(); break;
+                case "7": afficherTachesAFaire(); break;
                 case "8": rechercherParTitre(); break;
                 case "0":
                     System.out.println("\nFermeture de TaskFlow. À bientôt.");
@@ -91,6 +92,7 @@ public class ConsoleTaskFlow {
         System.out.println("4. Modifier la priorité d'une tâche");
         System.out.println("5. Gérer l'échéance d'une tâche");
         System.out.println("6. Sauvegarder les données");
+        System.out.println("7. Afficher seulement les tâches à faire");
         System.out.println("8. Rechercher une tâche par un mot du titre");
         System.out.println("0. Quitter");
         System.out.println();
@@ -174,6 +176,25 @@ public class ConsoleTaskFlow {
                     t.getPriorite().getLibelle(), t.getEcheanceTexte(), t.getStatut().getLibelle());
         }
         System.out.println("\nNombre de tâches : " + gestion.lister().size());
+    }
+
+    private void afficherTachesAFaire() {
+        if (gestion.lister().isEmpty()) {
+            System.out.println("\nAucune tâche à afficher.");
+            return;
+        }
+        List<Tache> aFaire = gestion.listerAFaire();
+        if (aFaire.isEmpty()) {
+            System.out.println("\nAucune tâche à faire. Toutes les tâches sont terminées.");
+            return;
+        }
+        System.out.println("\nTÂCHES À FAIRE\n");
+        System.out.printf("%-6s %-55s %-10s %-13s %s%n", "ID", "Titre", "Priorité", "Échéance", "Statut");
+        for (Tache t : aFaire) {
+            System.out.printf("%-6d %-55s %-10s %-13s %s%n", t.getId(), t.getTitre(),
+                    t.getPriorite().getLibelle(), t.getEcheanceTexte(), t.getStatut().getLibelle());
+        }
+        System.out.println("\nNombre de tâches à faire : " + aFaire.size());
     }
 
     private void rechercherParTitre() {
