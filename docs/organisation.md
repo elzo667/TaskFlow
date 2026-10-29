@@ -83,7 +83,7 @@ Les estimations sont relatives, en points (1 = petit changement localisé, 2 = c
 - le format du fichier est un texte simple séparé par des tabulations, ce qui limite l'effort de US-10 et US-11 ;
 - US-14 est estimé à 3 parce qu'il faut valider chaque champ de chaque ligne au chargement.
 
-Total : 34 points de récits (14 en itération 1, 20 en itération 2).
+Total : 37 points de récits (14 en itération 1, 23 en itération 2).
 
 ## Suivi du travail
 
@@ -127,7 +127,7 @@ Un élément bloqué reste dans sa colonne avec le label "bloqué" et un comment
 ### Itération 2 — Modifier les tâches et conserver les données
 
 - **Objectif** : rendre l'application utilisable d'une session à l'autre et permettre de modifier priorité et échéance.
-- **Récits** : US-06 à US-15 (20 points), et les tâches techniques T-03, T-06, T-07.
+- **Récits** : US-06 à US-15, US-18 et US-19 (23 points), et les tâches techniques T-03, T-06, T-07.
 - **Principales tâches** : classe `StockageTaches` (format `TASKFLOW-V1`, validation au chargement), messages d'erreur au démarrage et à la sauvegarde, README, tableau de vérification.
 - **Version obtenue** : [PR #26](https://github.com/elzo667/TaskFlow/pull/26) (sauvegarde, rechargement et cas d'erreur, US-10 à US-15, 2026-10-16 ; US-06 à US-09 étaient déjà livrés avec la PR #25), puis les corrections [#28](https://github.com/elzo667/TaskFlow/pull/28) et [#30](https://github.com/elzo667/TaskFlow/pull/30) et la documentation [#31](https://github.com/elzo667/TaskFlow/pull/31) et [#32](https://github.com/elzo667/TaskFlow/pull/32) (2026-10-19 et 2026-10-20).
 - **Vérifications** : les 12 scénarios de l'énoncé, consignés dans [verification.md](verification.md), tous conformes sur la version finale.
@@ -151,4 +151,4 @@ Un élément bloqué reste dans sa colonne avec le label "bloqué" et un comment
 |---|---|---|---|---|
 | Elhadji N Diagne | Création du backlog (US-01 à US-16, T-01 à T-07). Structure du code et récits US-01 à US-16. Coordination et fusion des PR. | [#2](https://github.com/elzo667/TaskFlow/issues/2) à [#24](https://github.com/elzo667/TaskFlow/issues/24) | [#25](https://github.com/elzo667/TaskFlow/pull/25), [#26](https://github.com/elzo667/TaskFlow/pull/26) | Aucune revue formelle. A fusionné [#28](https://github.com/elzo667/TaskFlow/pull/28) et [#30](https://github.com/elzo667/TaskFlow/pull/30) |
 | Laeticia Hammi | Revue de la PR #26 et signalement de deux anomalies. Correction des priorités 1, 2, 3. Correction de la saisie du titre et de la fin d'entrée. README, tableau de vérification (12 scénarios et données de test), ce document. | [#27](https://github.com/elzo667/TaskFlow/issues/27), [#29](https://github.com/elzo667/TaskFlow/issues/29), [#20](https://github.com/elzo667/TaskFlow/issues/20), [#23](https://github.com/elzo667/TaskFlow/issues/23), [#24](https://github.com/elzo667/TaskFlow/issues/24) | [#28](https://github.com/elzo667/TaskFlow/pull/28), [#30](https://github.com/elzo667/TaskFlow/pull/30), [#31](https://github.com/elzo667/TaskFlow/pull/31), [#32](https://github.com/elzo667/TaskFlow/pull/32) | Commentaire de revue sur [#26](https://github.com/elzo667/TaskFlow/pull/26) |
-| Jael Mulamba Ilunga | Règles de contribution et .gitignore (T-01). Tableau GitHub Projects avec ses colonnes et ses champs (T-04). Définition de terminé précisée et modèle de pull request (T-05). Récits US-18 (afficher seulement les tâches à faire) et US-19 (rechercher une tâche par un mot du titre). | [#18](https://github.com/elzo667/TaskFlow/issues/18), [#21](https://github.com/elzo667/TaskFlow/issues/21), [#22](https://github.com/elzo667/TaskFlow/issues/22), [#38](https://github.com/elzo667/TaskFlow/issues/38), [#39](https://github.com/elzo667/TaskFlow/issues/39) | [#34](https://github.com/elzo667/TaskFlow/pull/34), [#35](https://github.com/elzo667/TaskFlow/pull/35) et la PR de T-04 | |
+| Jael Mulamba Ilunga | Règles de contribution et .gitignore (T-01). Tableau GitHub Projects avec ses colonnes et ses champs (T-04). Définition de terminé précisée et modèle de pull request (T-05). Récits US-18 (afficher seulement les tâches à faire) et US-19 (rechercher une tâche par un mot du titre). | [#18](https://github.com/elzo667/TaskFlow/issues/18), [#21](https://github.com/elzo667/TaskFlow/issues/21), [#22](https://github.com/elzo667/TaskFlow/issues/22), [#38](https://github.com/elzo667/TaskFlow/issues/38), [#39](https://github.com/elzo667/TaskFlow/issues/39) | [#34](https://github.com/elzo667/TaskFlow/pull/34), [#35](https://github.com/elzo667/TaskFlow/pull/35), [#40](https://github.com/elzo667/TaskFlow/pull/40) et la PR de T-04 | |

@@ -67,6 +67,8 @@ L'application démarre avec une liste vide.
 4. Modifier la priorité d'une tâche
 5. Gérer l'échéance d'une tâche
 6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
 0. Quitter
 
 Votre choix : 1
