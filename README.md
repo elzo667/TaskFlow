@@ -25,6 +25,7 @@ Le suivi du travail se fait dans le tableau GitHub Projects [TaskFlow - Suivi MP
 5. **Gérer l'échéance** : définir, modifier ou retirer. Une date au mauvais format ou impossible (ex. `2026-02-30`) est refusée.
 6. **Sauvegarder** les données dans un fichier local. Elles sont rechargées automatiquement au démarrage suivant.
 7. **Afficher seulement les tâches à faire** : mêmes colonnes que l'option 2, avec le nombre de tâches à faire. Message explicite si la liste est vide ou si toutes les tâches sont terminées.
+8. **Rechercher une tâche par un mot du titre** : sans tenir compte des majuscules, mêmes colonnes que l'option 2, avec le nombre de résultats. Un mot vide est refusé. Message explicite si la liste est vide ou si aucune tâche ne correspond.
 0. **Quitter** l'application.
 
 ## Prérequis
@@ -66,6 +67,8 @@ L'application démarre avec une liste vide.
 4. Modifier la priorité d'une tâche
 5. Gérer l'échéance d'une tâche
 6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
 0. Quitter
 
 Votre choix : 1
