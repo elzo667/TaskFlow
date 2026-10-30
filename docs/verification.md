@@ -4,8 +4,8 @@
 
 | Élément | Valeur |
 |---|---|
-| Version vérifiée | `main`, commit `8ff6444` (après fusion de #28, #30 et #31) |
-| Date | 2026-10-20 |
+| Version vérifiée | `main`, commit `ae7fcb6` (version finale, après fusion de #41) |
+| Date | 2026-10-20, scénarios 1 à 12 exécutés à nouveau le 2026-10-29 |
 | Système | Windows 11 |
 | JDK | 24.0.2 |
 | Exécuté par | Laeticia Hammi |
@@ -74,3 +74,4 @@ Nous gardons le comportement demandé par l'énoncé. Pour une prochaine version
 - **Emplacement du fichier** : `taches.txt` est lu et écrit dans le dossier depuis lequel `java` est lancé.
 - **Fin de lignes** : sous Windows, le fichier est écrit avec des fins de ligne CRLF. Le chargement les accepte. Le comportement avec un fichier créé sous un autre système n'a pas été vérifié.
 - **Code de sortie** : quand le démarrage est interrompu par un fichier mal formé, le programme se termine avec le code 0 (succès). Ce n'est pas exigé par l'énoncé, mais un code non nul serait plus précis pour un script.
+- **Recherche sans les accents** (option 8, US-19) : la recherche ignore les majuscules mais pas les accents. « verifier » ne trouve pas « Vérifier la sauvegarde », alors que la saisie de priorité ignore déjà les accents. Signalé dans la revue de [#41](https://github.com/elzo667/TaskFlow/pull/41).

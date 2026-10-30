@@ -156,4 +156,5 @@ TASKFLOW-V1
 - La sauvegarde réécrit directement `taches.txt` : si l'écriture est interrompue en cours de route, le fichier peut être incomplet.
 - Une tabulation dans un titre est remplacée par une espace (la tabulation sert de séparateur dans le fichier).
 - Il n'est pas possible de supprimer une tâche ni de modifier son titre (hors du périmètre du mini-projet 1).
+- La recherche par titre (option 8) ignore les majuscules mais pas les accents : « verifier » ne trouve pas « Vérifier ».
 - Les anomalies relevées pendant les vérifications sont suivies dans les [Issues](https://github.com/elzo667/TaskFlow/issues) et dans [docs/verification.md](docs/verification.md).
