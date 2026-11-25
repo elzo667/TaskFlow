@@ -21,6 +21,12 @@ import java.util.Set;
 public class StockageTaches {
     private static final String ENTETE = "TASKFLOW-V1";
     private static final String SEP = "\t";
+    private static final int NB_CHAMPS = 5;
+    private static final int IDX_ID = 0;
+    private static final int IDX_TITRE = 1;
+    private static final int IDX_PRIORITE = 2;
+    private static final int IDX_ECHEANCE = 3;
+    private static final int IDX_STATUT = 4;
     private static final DateTimeFormatter FORMAT_DATE =
             DateTimeFormatter.ofPattern("uuuu-MM-dd").withResolverStyle(ResolverStyle.STRICT);
 
@@ -56,42 +62,42 @@ public class StockageTaches {
             }
             int numero = i + 1;
             String[] champs = ligne.split(SEP, -1);
-            if (champs.length != 5) {
+            if (champs.length != NB_CHAMPS) {
                 throw new FormatInvalideException("ligne " + numero + " : 5 champs attendus");
             }
             int id;
             try {
-                id = Integer.parseInt(champs[0]);
+                id = Integer.parseInt(champs[IDX_ID]);
             } catch (NumberFormatException e) {
                 throw new FormatInvalideException("ligne " + numero + " : identifiant invalide");
             }
             if (id < 1 || !ids.add(id)) {
                 throw new FormatInvalideException("ligne " + numero + " : identifiant invalide ou en double");
             }
-            if (champs[1].trim().isEmpty()) {
+            if (champs[IDX_TITRE].trim().isEmpty()) {
                 throw new FormatInvalideException("ligne " + numero + " : titre vide");
             }
             Priorite priorite;
             try {
-                priorite = Priorite.valueOf(champs[2]);
+                priorite = Priorite.valueOf(champs[IDX_PRIORITE]);
             } catch (IllegalArgumentException e) {
                 throw new FormatInvalideException("ligne " + numero + " : priorité invalide");
             }
             LocalDate echeance = null;
-            if (!champs[3].isEmpty()) {
+            if (!champs[IDX_ECHEANCE].isEmpty()) {
                 try {
-                    echeance = LocalDate.parse(champs[3], FORMAT_DATE);
+                    echeance = LocalDate.parse(champs[IDX_ECHEANCE], FORMAT_DATE);
                 } catch (DateTimeParseException e) {
                     throw new FormatInvalideException("ligne " + numero + " : échéance invalide");
                 }
             }
             Statut statut;
             try {
-                statut = Statut.valueOf(champs[4]);
+                statut = Statut.valueOf(champs[IDX_STATUT]);
             } catch (IllegalArgumentException e) {
                 throw new FormatInvalideException("ligne " + numero + " : statut invalide");
             }
-            Tache tache = new Tache(id, champs[1], priorite, echeance);
+            Tache tache = new Tache(id, champs[IDX_TITRE], priorite, echeance);
             tache.setStatut(statut);
             resultat.add(tache);
         }
