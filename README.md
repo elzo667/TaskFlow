@@ -30,7 +30,7 @@ Le suivi du travail se fait dans le tableau GitHub Projects [TaskFlow - Suivi MP
 
 ## Prérequis
 
-- **JDK 11 ou plus récent** (`javac` et `java` accessibles dans le terminal). Le projet a été testé avec le **JDK 24**.
+- **JDK 17 ou plus récent** (`javac` et `java` accessibles dans le terminal). Le projet a été testé avec le **JDK 17** (Eclipse Temurin).
 - Aucune bibliothèque externe.
 
 Vérifier l'installation :
@@ -42,14 +42,14 @@ javac -version
 
 ## Compiler et exécuter
 
-Depuis la racine du dépôt (le dossier qui contient `README.md` et `taskflow/`) :
+Depuis la racine du dépôt (le dossier qui contient `README.md` et `pom.xml`) :
 
 ```bash
-javac -encoding UTF-8 -d out taskflow/*.java
-java -cp out taskflow.Main
+./mvnw clean package
+java -cp target/classes taskflow.Main
 ```
 
-Les fichiers compilés sont placés dans `out/` (ignoré par Git).
+Les fichiers compilés sont placés dans `target/` (ignoré par Git).
 
 Sous Windows, si les accents s'affichent mal dans la console, exécuter `chcp 65001` avant de lancer l'application.
 
