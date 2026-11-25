@@ -60,47 +60,51 @@ public class StockageTaches {
             if (ligne.trim().isEmpty()) {
                 continue;
             }
-            int numero = i + 1;
-            String[] champs = ligne.split(SEP, -1);
-            if (champs.length != NB_CHAMPS) {
-                throw new FormatInvalideException("ligne " + numero + " : 5 champs attendus");
-            }
-            int id;
-            try {
-                id = Integer.parseInt(champs[IDX_ID]);
-            } catch (NumberFormatException e) {
-                throw new FormatInvalideException("ligne " + numero + " : identifiant invalide");
-            }
-            if (id < 1 || !ids.add(id)) {
-                throw new FormatInvalideException("ligne " + numero + " : identifiant invalide ou en double");
-            }
-            if (champs[IDX_TITRE].trim().isEmpty()) {
-                throw new FormatInvalideException("ligne " + numero + " : titre vide");
-            }
-            Priorite priorite;
-            try {
-                priorite = Priorite.valueOf(champs[IDX_PRIORITE]);
-            } catch (IllegalArgumentException e) {
-                throw new FormatInvalideException("ligne " + numero + " : priorité invalide");
-            }
-            LocalDate echeance = null;
-            if (!champs[IDX_ECHEANCE].isEmpty()) {
-                try {
-                    echeance = LocalDate.parse(champs[IDX_ECHEANCE], FORMAT_DATE);
-                } catch (DateTimeParseException e) {
-                    throw new FormatInvalideException("ligne " + numero + " : échéance invalide");
-                }
-            }
-            Statut statut;
-            try {
-                statut = Statut.valueOf(champs[IDX_STATUT]);
-            } catch (IllegalArgumentException e) {
-                throw new FormatInvalideException("ligne " + numero + " : statut invalide");
-            }
-            Tache tache = new Tache(id, champs[IDX_TITRE], priorite, echeance);
-            tache.setStatut(statut);
-            resultat.add(tache);
+            resultat.add(lireTache(ligne, i + 1, ids));
         }
         return resultat;
+    }
+
+    /** Convertit une ligne du fichier en tâche ; lève une exception si la ligne est invalide. */
+    private Tache lireTache(String ligne, int numero, Set<Integer> ids) throws FormatInvalideException {
+        String[] champs = ligne.split(SEP, -1);
+        if (champs.length != NB_CHAMPS) {
+            throw new FormatInvalideException("ligne " + numero + " : 5 champs attendus");
+        }
+        int id;
+        try {
+            id = Integer.parseInt(champs[IDX_ID]);
+        } catch (NumberFormatException e) {
+            throw new FormatInvalideException("ligne " + numero + " : identifiant invalide");
+        }
+        if (id < 1 || !ids.add(id)) {
+            throw new FormatInvalideException("ligne " + numero + " : identifiant invalide ou en double");
+        }
+        if (champs[IDX_TITRE].trim().isEmpty()) {
+            throw new FormatInvalideException("ligne " + numero + " : titre vide");
+        }
+        Priorite priorite;
+        try {
+            priorite = Priorite.valueOf(champs[IDX_PRIORITE]);
+        } catch (IllegalArgumentException e) {
+            throw new FormatInvalideException("ligne " + numero + " : priorité invalide");
+        }
+        LocalDate echeance = null;
+        if (!champs[IDX_ECHEANCE].isEmpty()) {
+            try {
+                echeance = LocalDate.parse(champs[IDX_ECHEANCE], FORMAT_DATE);
+            } catch (DateTimeParseException e) {
+                throw new FormatInvalideException("ligne " + numero + " : échéance invalide");
+            }
+        }
+        Statut statut;
+        try {
+            statut = Statut.valueOf(champs[IDX_STATUT]);
+        } catch (IllegalArgumentException e) {
+            throw new FormatInvalideException("ligne " + numero + " : statut invalide");
+        }
+        Tache tache = new Tache(id, champs[IDX_TITRE], priorite, echeance);
+        tache.setStatut(statut);
+        return tache;
     }
 }
