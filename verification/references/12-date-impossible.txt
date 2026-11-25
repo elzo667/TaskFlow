@@ -1,0 +1,9 @@
+TASKFLOW — Gestion des tâches
+
+Le fichier taches.txt est illisible ou mal formé.
+Détail : ligne 2 : échéance invalide
+Le fichier n'a pas été modifié. Corrigez-le ou supprimez-le, puis relancez TaskFlow.
+
+=== taches.txt ===
+TASKFLOW-V1
+1	A	NORMALE	2026-02-30	A_FAIRE

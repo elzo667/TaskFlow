@@ -167,4 +167,4 @@ Les scénarios de `verification/scenarios/` rejouent des saisies clavier et comp
     export TASKFLOW_CMD="java -Dfile.encoding=UTF-8 -Dstdout.encoding=UTF-8 -Dstdin.encoding=UTF-8 -cp $PWD/out taskflow.Main"
     ./verification/rejouer.sh
 
-Résultat attendu : `10/10 scénarios identiques aux références`, aucune ligne `FAIL`. À utiliser après chaque refactoring.
+Résultat attendu : `13/13 scénarios identiques aux références`, aucune ligne `FAIL`. À utiliser après chaque refactoring.
