@@ -112,12 +112,8 @@ public class ConsoleTaskFlow {
 
     private void ajouterTache() {
         System.out.println("\nAJOUTER UNE TÂCHE\n");
-        String titre = lire("Titre : ");
-        while (titre.trim().isEmpty() && !entreeTerminee) {
-            System.out.println("\nLe titre ne peut pas être vide.");
-            titre = lire("Entrez un titre (ou « annuler » pour abandonner) : ");
-        }
-        if (entreeTerminee || titre.trim().equalsIgnoreCase(MOT_ANNULER)) {
+        String titre = lireTitre();
+        if (titre == null) {
             annulerAjout();
             return;
         }
@@ -170,6 +166,19 @@ public class ConsoleTaskFlow {
         System.out.println("Priorité    : " + t.getPriorite().getLibelle());
         System.out.println("Échéance    : " + t.getEcheanceTexte());
         System.out.println("Statut      : " + t.getStatut().getLibelle());
+    }
+
+    /** Lit le titre ; retourne null si l'utilisateur annule ou si l'entrée est terminée. */
+    private String lireTitre() {
+        String titre = lire("Titre : ");
+        while (titre.trim().isEmpty() && !entreeTerminee) {
+            System.out.println("\nLe titre ne peut pas être vide.");
+            titre = lire("Entrez un titre (ou « annuler » pour abandonner) : ");
+        }
+        if (entreeTerminee || titre.trim().equalsIgnoreCase(MOT_ANNULER)) {
+            return null;
+        }
+        return titre;
     }
 
     private void annulerAjout() {
