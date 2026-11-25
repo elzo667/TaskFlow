@@ -34,10 +34,10 @@ public class StockageTaches {
     public void sauvegarder(Path fichier, List<Tache> taches) throws IOException {
         List<String> lignes = new ArrayList<>();
         lignes.add(ENTETE);
-        for (Tache t : taches) {
-            String echeance = t.getEcheance() == null ? "" : t.getEcheance().toString();
-            lignes.add(t.getId() + SEP + t.getTitre() + SEP + t.getPriorite().name()
-                    + SEP + echeance + SEP + t.getStatut().name());
+        for (Tache tache : taches) {
+            String echeance = tache.getEcheance() == null ? "" : tache.getEcheance().toString();
+            lignes.add(tache.getId() + SEP + tache.getTitre() + SEP + tache.getPriorite().name()
+                    + SEP + echeance + SEP + tache.getStatut().name());
         }
         Files.write(fichier, lignes, StandardCharsets.UTF_8);
     }
@@ -91,9 +91,9 @@ public class StockageTaches {
             } catch (IllegalArgumentException e) {
                 throw new FormatInvalideException("ligne " + numero + " : statut invalide");
             }
-            Tache t = new Tache(id, champs[1], priorite, echeance);
-            t.setStatut(statut);
-            resultat.add(t);
+            Tache tache = new Tache(id, champs[1], priorite, echeance);
+            tache.setStatut(statut);
+            resultat.add(tache);
         }
         return resultat;
     }
