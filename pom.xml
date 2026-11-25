@@ -15,7 +15,12 @@
     </properties>
 
     <dependencies>
-        <!-- ajoutées aux issues #51 (Logback) et #52 (POI) -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.6.8</version>
+        </dependency>
+        <!-- #52 : poi-ooxml et log4j-to-slf4j seront ajoutés ici -->
     </dependencies>
 
     <build>

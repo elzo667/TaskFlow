@@ -7,9 +7,12 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /** Interface console de TaskFlow (menu, saisies et affichages). */
 public class ConsoleTaskFlow {
+    private static final Logger LOG = LoggerFactory.getLogger(ConsoleTaskFlow.class);
     private static final Path FICHIER = Paths.get("taches.txt");
     private static final String CHOIX_AJOUTER = "1";
     private static final String CHOIX_AFFICHER = "2";
@@ -28,6 +31,7 @@ public class ConsoleTaskFlow {
 
     public void demarrer() {
         System.out.println("TASKFLOW — Gestion des tâches");
+        LOG.info("Démarrage de TaskFlow");
         System.out.println();
         if (!chargerAuDemarrage()) {
             return;
@@ -48,10 +52,12 @@ public class ConsoleTaskFlow {
                 case CHOIX_RECHERCHER: rechercherParTitre(); break;
                 case CHOIX_QUITTER:
                     System.out.println("\nFermeture de TaskFlow. À bientôt.");
+                    LOG.info("Arrêt de TaskFlow");
                     continuer = false;
                     break;
                 default:
                     System.out.println("\nChoix invalide. Veuillez entrer un nombre du menu.");
+                    LOG.warn("Saisie invalide refusée : choix du menu");
             }
         }
     }
@@ -68,6 +74,7 @@ public class ConsoleTaskFlow {
             System.out.println(chargees.size() + " tâche(s) chargée(s) depuis " + FICHIER + ".");
             return true;
         } catch (StockageTaches.FormatInvalideException | IOException e) {
+            LOG.error("Fichier de données illisible", e);
             System.out.println("Le fichier " + FICHIER + " est illisible ou mal formé.");
             System.out.println("Détail : " + e.getMessage());
             System.out.println("Le fichier n'a pas été modifié. Corrigez-le ou supprimez-le, puis relancez TaskFlow.");
@@ -81,6 +88,7 @@ public class ConsoleTaskFlow {
             System.out.println("\nSauvegarde réussie : " + gestion.lister().size()
                     + " tâche(s) enregistrée(s) dans " + FICHIER + ".");
         } catch (IOException e) {
+            LOG.error("Échec de la sauvegarde", e);
             System.out.println("\nÉchec de la sauvegarde : impossible d'écrire dans " + FICHIER + ".");
             System.out.println("Cause possible : fichier en lecture seule ou dossier protégé.");
             System.out.println("Vos données n'ont pas été enregistrées.");
@@ -158,6 +166,7 @@ public class ConsoleTaskFlow {
         }
         if (mot.trim().isEmpty()) {
             System.out.println("\nLe mot à rechercher ne peut pas être vide.");
+            LOG.warn("Saisie invalide refusée : mot de recherche vide");
             return;
         }
         List<Tache> resultats = gestion.rechercherParTitre(mot);
@@ -178,6 +187,7 @@ public class ConsoleTaskFlow {
         }
         if (t.getStatut() == Statut.TERMINEE) {
             System.out.println("\nLa tâche « " + t.getTitre() + " » est déjà terminée.");
+            LOG.warn("Tâche {} déjà terminée", t.getId());
         } else {
             gestion.terminer(t.getId());
             System.out.println("\nLa tâche « " + t.getTitre() + " » est maintenant terminée.");
@@ -195,6 +205,7 @@ public class ConsoleTaskFlow {
                 entree.lire("Nouvelle priorité (Basse, Normale, Élevée ou 1, 2, 3) : "));
         if (nouvelle == null) {
             System.out.println("\nPriorité invalide. La priorité actuelle est conservée.");
+            LOG.warn("Saisie invalide refusée : priorité");
             return;
         }
         gestion.modifierPriorite(t.getId(), nouvelle);
@@ -221,6 +232,7 @@ public class ConsoleTaskFlow {
             case "2": retirerEcheance(t); break;
             case "0": System.out.println("\nOpération annulée."); break;
             default: System.out.println("\nChoix invalide. Aucune modification.");
+                LOG.warn("Saisie invalide refusée : choix de l'échéance");
         }
     }
 
@@ -231,6 +243,7 @@ public class ConsoleTaskFlow {
             date = LocalDate.parse(saisie, SaisieConsole.FORMAT_DATE);
         } catch (DateTimeParseException e) {
             System.out.println("\nDate invalide. L'échéance actuelle est conservée.");
+            LOG.warn("Saisie invalide refusée : échéance");
             return;
         }
         String ancienne = t.getEcheanceTexte();
@@ -255,6 +268,7 @@ public class ConsoleTaskFlow {
         Tache tache = gestion.trouver(id);
         if (tache == null) {
             System.out.println("\nAucune tâche ne porte l'identifiant " + id + ".");
+            LOG.warn("Identifiant inconnu : {}", id);
         }
         return tache;
     }

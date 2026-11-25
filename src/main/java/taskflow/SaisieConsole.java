@@ -5,9 +5,12 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
 import java.util.Scanner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /** Saisies au clavier de TaskFlow : lecture des lignes et validation des valeurs saisies. */
 public class SaisieConsole {
+    private static final Logger LOG = LoggerFactory.getLogger(SaisieConsole.class);
     public static final DateTimeFormatter FORMAT_DATE =
             DateTimeFormatter.ofPattern("uuuu-MM-dd").withResolverStyle(ResolverStyle.STRICT);
 
@@ -38,6 +41,7 @@ public class SaisieConsole {
             return Integer.parseInt(saisie);
         } catch (NumberFormatException e) {
             System.out.println("\nIdentifiant invalide. Entrez un nombre entier.");
+            LOG.warn("Saisie invalide refusée : identifiant");
             return null;
         }
     }
@@ -47,6 +51,7 @@ public class SaisieConsole {
         String titre = lire("Titre : ");
         while (titre.trim().isEmpty() && !terminee) {
             System.out.println("\nLe titre ne peut pas être vide.");
+            LOG.warn("Saisie invalide refusée : titre");
             titre = lire("Entrez un titre (ou « annuler » pour abandonner) : ");
         }
         if (terminee || titre.trim().equalsIgnoreCase(MOT_ANNULER)) {
@@ -71,6 +76,7 @@ public class SaisieConsole {
                 priorite = Priorite.depuisTexte(saisie);
                 if (priorite == null) {
                     System.out.println("Priorité invalide. Choisissez Basse, Normale ou Élevée (ou 1, 2, 3).");
+                    LOG.warn("Saisie invalide refusée : priorité");
                 }
             }
         }
@@ -90,6 +96,7 @@ public class SaisieConsole {
                 return LocalDate.parse(saisie, FORMAT_DATE);
             } catch (DateTimeParseException e) {
                 System.out.println("Date invalide. Utilisez le format AAAA-MM-JJ avec une date réelle.");
+                LOG.warn("Saisie invalide refusée : échéance");
             }
         }
     }
