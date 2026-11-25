@@ -5,19 +5,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.time.format.ResolverStyle;
 import java.util.List;
-import java.util.Scanner;
 
 /** Interface console de TaskFlow (menu, saisies et affichages). */
 public class ConsoleTaskFlow {
-    private static final DateTimeFormatter FORMAT_DATE =
-            DateTimeFormatter.ofPattern("uuuu-MM-dd").withResolverStyle(ResolverStyle.STRICT);
-
     private static final Path FICHIER = Paths.get("taches.txt");
-    private static final String MOT_ANNULER = "annuler";
     private static final String CHOIX_AJOUTER = "1";
     private static final String CHOIX_AFFICHER = "2";
     private static final String CHOIX_TERMINER = "3";
@@ -27,13 +20,11 @@ public class ConsoleTaskFlow {
     private static final String CHOIX_A_FAIRE = "7";
     private static final String CHOIX_RECHERCHER = "8";
     private static final String CHOIX_QUITTER = "0";
-    private static final String FORMAT_ENTETE_TABLEAU = "%-6s %-55s %-10s %-13s %s%n";
-    private static final String FORMAT_LIGNE_TABLEAU = "%-6d %-55s %-10s %-13s %s%n";
 
     private final StockageTaches stockage = new StockageTaches();
-    private final Scanner scanner = new Scanner(System.in);
+    private final SaisieConsole entree = new SaisieConsole();
+    private final AffichageConsole affichage = new AffichageConsole();
     private final GestionTaches gestion = new GestionTaches();
-    private boolean entreeTerminee = false; // vrai quand il n'y a plus rien à lire
 
     public void demarrer() {
         System.out.println("TASKFLOW — Gestion des tâches");
@@ -44,8 +35,8 @@ public class ConsoleTaskFlow {
 
         boolean continuer = true;
         while (continuer) {
-            afficherMenu();
-            String choix = lire("Votre choix : ");
+            affichage.afficherMenu();
+            String choix = entree.lire("Votre choix : ");
             switch (choix) {
                 case CHOIX_AJOUTER: ajouterTache(); break;
                 case CHOIX_AFFICHER: afficherTaches(); break;
@@ -96,36 +87,23 @@ public class ConsoleTaskFlow {
         }
     }
 
-    private void afficherMenu() {
-        System.out.println();
-        System.out.println("1. Ajouter une tâche");
-        System.out.println("2. Afficher les tâches");
-        System.out.println("3. Marquer une tâche comme terminée");
-        System.out.println("4. Modifier la priorité d'une tâche");
-        System.out.println("5. Gérer l'échéance d'une tâche");
-        System.out.println("6. Sauvegarder les données");
-        System.out.println("7. Afficher seulement les tâches à faire");
-        System.out.println("8. Rechercher une tâche par un mot du titre");
-        System.out.println("0. Quitter");
-        System.out.println();
-    }
 
     private void ajouterTache() {
         System.out.println("\nAJOUTER UNE TÂCHE\n");
-        String titre = lireTitre();
+        String titre = entree.lireTitre();
         if (titre == null) {
             annulerAjout();
             return;
         }
 
-        Priorite priorite = lirePriorite();
+        Priorite priorite = entree.lirePriorite();
         if (priorite == null) {
             annulerAjout();
             return;
         }
 
-        LocalDate echeance = lireEcheance();
-        if (entreeTerminee) {
+        LocalDate echeance = entree.lireEcheance();
+        if (entree.estTerminee()) {
             annulerAjout();
             return;
         }
@@ -139,58 +117,6 @@ public class ConsoleTaskFlow {
         System.out.println("Statut      : " + t.getStatut().getLibelle());
     }
 
-    /** Lit le titre ; retourne null si l'utilisateur annule ou si l'entrée est terminée. */
-    private String lireTitre() {
-        String titre = lire("Titre : ");
-        while (titre.trim().isEmpty() && !entreeTerminee) {
-            System.out.println("\nLe titre ne peut pas être vide.");
-            titre = lire("Entrez un titre (ou « annuler » pour abandonner) : ");
-        }
-        if (entreeTerminee || titre.trim().equalsIgnoreCase(MOT_ANNULER)) {
-            return null;
-        }
-        return titre;
-    }
-
-    /** Lit la priorité ; retourne null si l'entrée est terminée. */
-    private Priorite lirePriorite() {
-        System.out.println("\nPriorité : Basse (1), Normale (2) ou Élevée (3)");
-        System.out.println("Appuyez sur Entrée pour choisir Normale.");
-        Priorite priorite = null;
-        while (priorite == null) {
-            String saisie = lire("Votre priorité : ");
-            if (entreeTerminee) {
-                return null;
-            }
-            if (saisie.trim().isEmpty()) {
-                priorite = Priorite.NORMALE;
-            } else {
-                priorite = Priorite.depuisTexte(saisie);
-                if (priorite == null) {
-                    System.out.println("Priorité invalide. Choisissez Basse, Normale ou Élevée (ou 1, 2, 3).");
-                }
-            }
-        }
-        return priorite;
-    }
-
-    /** Lit l'échéance ; retourne null si aucune échéance n'est saisie ou si l'entrée est terminée. */
-    private LocalDate lireEcheance() {
-        System.out.println("\nÉchéance au format AAAA-MM-JJ");
-        System.out.println("Appuyez sur Entrée pour ne pas préciser d'échéance.");
-        while (true) {
-            String saisie = lire("Votre échéance : ").trim();
-            if (entreeTerminee || saisie.isEmpty()) {
-                return null;
-            }
-            try {
-                return LocalDate.parse(saisie, FORMAT_DATE);
-            } catch (DateTimeParseException e) {
-                System.out.println("Date invalide. Utilisez le format AAAA-MM-JJ avec une date réelle.");
-            }
-        }
-    }
-
     private void annulerAjout() {
         System.out.println("\nAjout annulé. Aucune tâche n'a été ajoutée.");
     }
@@ -201,11 +127,7 @@ public class ConsoleTaskFlow {
             return;
         }
         System.out.println("\nLISTE DES TÂCHES\n");
-        System.out.printf(FORMAT_ENTETE_TABLEAU, "ID", "Titre", "Priorité", "Échéance", "Statut");
-        for (Tache t : gestion.lister()) {
-            System.out.printf(FORMAT_LIGNE_TABLEAU, t.getId(), t.getTitre(),
-                    t.getPriorite().getLibelle(), t.getEcheanceTexte(), t.getStatut().getLibelle());
-        }
+        affichage.afficherTableau(gestion.lister());
         System.out.println("\nNombre de tâches : " + gestion.lister().size());
     }
 
@@ -220,11 +142,7 @@ public class ConsoleTaskFlow {
             return;
         }
         System.out.println("\nTÂCHES À FAIRE\n");
-        System.out.printf(FORMAT_ENTETE_TABLEAU, "ID", "Titre", "Priorité", "Échéance", "Statut");
-        for (Tache t : aFaire) {
-            System.out.printf(FORMAT_LIGNE_TABLEAU, t.getId(), t.getTitre(),
-                    t.getPriorite().getLibelle(), t.getEcheanceTexte(), t.getStatut().getLibelle());
-        }
+        affichage.afficherTableau(aFaire);
         System.out.println("\nNombre de tâches à faire : " + aFaire.size());
     }
 
@@ -234,8 +152,8 @@ public class ConsoleTaskFlow {
             return;
         }
         System.out.println("\nRECHERCHER UNE TÂCHE PAR UN MOT DU TITRE\n");
-        String mot = lire("Mot à rechercher : ");
-        if (entreeTerminee) {
+        String mot = entree.lire("Mot à rechercher : ");
+        if (entree.estTerminee()) {
             return;
         }
         if (mot.trim().isEmpty()) {
@@ -248,11 +166,7 @@ public class ConsoleTaskFlow {
             return;
         }
         System.out.println("\nRÉSULTATS DE LA RECHERCHE « " + mot.trim() + " »\n");
-        System.out.printf(FORMAT_ENTETE_TABLEAU, "ID", "Titre", "Priorité", "Échéance", "Statut");
-        for (Tache t : resultats) {
-            System.out.printf(FORMAT_LIGNE_TABLEAU, t.getId(), t.getTitre(),
-                    t.getPriorite().getLibelle(), t.getEcheanceTexte(), t.getStatut().getLibelle());
-        }
+        affichage.afficherTableau(resultats);
         System.out.println("\nNombre de résultats : " + resultats.size());
     }
 
@@ -278,7 +192,7 @@ public class ConsoleTaskFlow {
         }
         System.out.println("\nPriorité actuelle : " + t.getPriorite().getLibelle());
         Priorite nouvelle = Priorite.depuisTexte(
-                lire("Nouvelle priorité (Basse, Normale, Élevée ou 1, 2, 3) : "));
+                entree.lire("Nouvelle priorité (Basse, Normale, Élevée ou 1, 2, 3) : "));
         if (nouvelle == null) {
             System.out.println("\nPriorité invalide. La priorité actuelle est conservée.");
             return;
@@ -301,7 +215,7 @@ public class ConsoleTaskFlow {
         System.out.println("2. Retirer l'échéance");
         System.out.println("0. Annuler");
         System.out.println();
-        String choix = lire("Votre choix : ").trim();
+        String choix = entree.lire("Votre choix : ").trim();
         switch (choix) {
             case "1": definirEcheance(t); break;
             case "2": retirerEcheance(t); break;
@@ -311,10 +225,10 @@ public class ConsoleTaskFlow {
     }
 
     private void definirEcheance(Tache t) {
-        String saisie = lire("Nouvelle échéance (AAAA-MM-JJ) : ").trim();
+        String saisie = entree.lire("Nouvelle échéance (AAAA-MM-JJ) : ").trim();
         LocalDate date;
         try {
-            date = LocalDate.parse(saisie, FORMAT_DATE);
+            date = LocalDate.parse(saisie, SaisieConsole.FORMAT_DATE);
         } catch (DateTimeParseException e) {
             System.out.println("\nDate invalide. L'échéance actuelle est conservée.");
             return;
@@ -334,7 +248,7 @@ public class ConsoleTaskFlow {
     }
 
     private Tache demanderTache() {
-        Integer id = lireIdentifiant();
+        Integer id = entree.lireIdentifiant();
         if (id == null) {
             return null;
         }
@@ -343,24 +257,5 @@ public class ConsoleTaskFlow {
             System.out.println("\nAucune tâche ne porte l'identifiant " + id + ".");
         }
         return tache;
-    }
-
-    private Integer lireIdentifiant() {
-        String saisie = lire("Identifiant de la tâche : ").trim();
-        try {
-            return Integer.parseInt(saisie);
-        } catch (NumberFormatException e) {
-            System.out.println("\nIdentifiant invalide. Entrez un nombre entier.");
-            return null;
-        }
-    }
-
-    private String lire(String invite) {
-        System.out.print(invite);
-        if (!scanner.hasNextLine()) {
-            entreeTerminee = true;
-            return CHOIX_QUITTER; // fin de l'entrée : le menu principal quitte proprement
-        }
-        return scanner.nextLine();
     }
 }
