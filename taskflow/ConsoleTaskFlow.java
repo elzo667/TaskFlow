@@ -239,17 +239,14 @@ public class ConsoleTaskFlow {
 
     private void terminerTache() {
         System.out.println("\nMARQUER UNE TÂCHE COMME TERMINÉE\n");
-        Integer id = lireIdentifiant();
-        if (id == null) {
+        Tache t = demanderTache();
+        if (t == null) {
             return;
         }
-        Tache t = gestion.trouver(id);
-        if (t == null) {
-            System.out.println("\nAucune tâche ne porte l'identifiant " + id + ".");
-        } else if (t.getStatut() == Statut.TERMINEE) {
+        if (t.getStatut() == Statut.TERMINEE) {
             System.out.println("\nLa tâche « " + t.getTitre() + " » est déjà terminée.");
         } else {
-            gestion.terminer(id);
+            gestion.terminer(t.getId());
             System.out.println("\nLa tâche « " + t.getTitre() + " » est maintenant terminée.");
         }
     }
