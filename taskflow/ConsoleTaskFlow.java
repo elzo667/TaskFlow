@@ -253,13 +253,8 @@ public class ConsoleTaskFlow {
 
     private void modifierPriorite() {
         System.out.println("\nMODIFIER LA PRIORITÉ D'UNE TÂCHE\n");
-        Integer id = lireIdentifiant();
-        if (id == null) {
-            return;
-        }
-        Tache t = gestion.trouver(id);
+        Tache t = demanderTache();
         if (t == null) {
-            System.out.println("\nAucune tâche ne porte l'identifiant " + id + ".");
             return;
         }
         System.out.println("\nPriorité actuelle : " + t.getPriorite().getLibelle());
@@ -269,20 +264,15 @@ public class ConsoleTaskFlow {
             System.out.println("\nPriorité invalide. La priorité actuelle est conservée.");
             return;
         }
-        gestion.modifierPriorite(id, nouvelle);
+        gestion.modifierPriorite(t.getId(), nouvelle);
         System.out.println("\nLa priorité de la tâche « " + t.getTitre()
                 + " » est maintenant : " + nouvelle.getLibelle() + ".");
     }
 
     private void gererEcheance() {
         System.out.println("\nGÉRER L'ÉCHÉANCE D'UNE TÂCHE\n");
-        Integer id = lireIdentifiant();
-        if (id == null) {
-            return;
-        }
-        Tache t = gestion.trouver(id);
+        Tache t = demanderTache();
         if (t == null) {
-            System.out.println("\nAucune tâche ne porte l'identifiant " + id + ".");
             return;
         }
         System.out.println("\nTâche : " + t.getTitre());
