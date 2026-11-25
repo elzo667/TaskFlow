@@ -1,0 +1,140 @@
+TASKFLOW — Gestion des tâches
+
+3 tâche(s) chargée(s) depuis taches.txt.
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+MARQUER UNE TÂCHE COMME TERMINÉE
+
+Identifiant de la tâche : 
+La tâche « Vérifier la sauvegarde du serveur » est déjà terminée.
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+MARQUER UNE TÂCHE COMME TERMINÉE
+
+Identifiant de la tâche : 
+La tâche « Vérifier la sauvegarde du serveur » est déjà terminée.
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+MARQUER UNE TÂCHE COMME TERMINÉE
+
+Identifiant de la tâche : 
+La tâche « Mettre à jour le guide utilisateur » est maintenant terminée.
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+MARQUER UNE TÂCHE COMME TERMINÉE
+
+Identifiant de la tâche : 
+Aucune tâche ne porte l'identifiant 99.
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+MARQUER UNE TÂCHE COMME TERMINÉE
+
+Identifiant de la tâche : 
+Identifiant invalide. Entrez un nombre entier.
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+LISTE DES TÂCHES
+
+ID     Titre                                                   Priorité   Échéance      Statut
+1      Vérifier la sauvegarde du serveur                       Élevée     2030-01-15    Terminée
+2      Mettre à jour le guide utilisateur                      Basse      Aucune        Terminée
+3      Préparer le poste de Marie                              Normale    2030-06-30    À faire
+
+Nombre de tâches : 3
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+TÂCHES À FAIRE
+
+ID     Titre                                                   Priorité   Échéance      Statut
+3      Préparer le poste de Marie                              Normale    2030-06-30    À faire
+
+Nombre de tâches à faire : 1
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+Fermeture de TaskFlow. À bientôt.
+
+=== taches.txt ===
+TASKFLOW-V1
+1	Vérifier la sauvegarde du serveur	ELEVEE	2030-01-15	TERMINEE
+2	Mettre à jour le guide utilisateur	BASSE		A_FAIRE
+3	Préparer le poste de Marie	NORMALE	2030-06-30	A_FAIRE

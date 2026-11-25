@@ -1,0 +1,92 @@
+TASKFLOW — Gestion des tâches
+
+Aucun fichier de données trouvé.
+L'application démarre avec une liste vide.
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+AJOUTER UNE TÂCHE
+
+Titre : 
+Priorité : Basse (1), Normale (2) ou Élevée (3)
+Appuyez sur Entrée pour choisir Normale.
+Votre priorité : 
+Échéance au format AAAA-MM-JJ
+Appuyez sur Entrée pour ne pas préciser d'échéance.
+Votre échéance : 
+Tâche ajoutée avec succès.
+
+Identifiant : 1
+Titre       : Mettre à jour le guide utilisateur
+Priorité    : Normale
+Échéance    : Aucune
+Statut      : À faire
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+AJOUTER UNE TÂCHE
+
+Titre : 
+Priorité : Basse (1), Normale (2) ou Élevée (3)
+Appuyez sur Entrée pour choisir Normale.
+Votre priorité : 
+Échéance au format AAAA-MM-JJ
+Appuyez sur Entrée pour ne pas préciser d'échéance.
+Votre échéance : 
+Tâche ajoutée avec succès.
+
+Identifiant : 2
+Titre       : Vérifier la sauvegarde du serveur
+Priorité    : Élevée
+Échéance    : 2030-01-15
+Statut      : À faire
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+LISTE DES TÂCHES
+
+ID     Titre                                                   Priorité   Échéance      Statut
+1      Mettre à jour le guide utilisateur                      Normale    Aucune        À faire
+2      Vérifier la sauvegarde du serveur                       Élevée     2030-01-15    À faire
+
+Nombre de tâches : 2
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+Fermeture de TaskFlow. À bientôt.

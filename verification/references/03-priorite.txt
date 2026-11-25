@@ -1,0 +1,130 @@
+TASKFLOW — Gestion des tâches
+
+3 tâche(s) chargée(s) depuis taches.txt.
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+MODIFIER LA PRIORITÉ D'UNE TÂCHE
+
+Identifiant de la tâche : 
+Priorité actuelle : Élevée
+Nouvelle priorité (Basse, Normale, Élevée ou 1, 2, 3) : 
+La priorité de la tâche « Vérifier la sauvegarde du serveur » est maintenant : Basse.
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+MODIFIER LA PRIORITÉ D'UNE TÂCHE
+
+Identifiant de la tâche : 
+Priorité actuelle : Basse
+Nouvelle priorité (Basse, Normale, Élevée ou 1, 2, 3) : 
+La priorité de la tâche « Mettre à jour le guide utilisateur » est maintenant : Élevée.
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+MODIFIER LA PRIORITÉ D'UNE TÂCHE
+
+Identifiant de la tâche : 
+Priorité actuelle : Normale
+Nouvelle priorité (Basse, Normale, Élevée ou 1, 2, 3) : 
+La priorité de la tâche « Préparer le poste de Marie » est maintenant : Normale.
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+MODIFIER LA PRIORITÉ D'UNE TÂCHE
+
+Identifiant de la tâche : 
+Priorité actuelle : Basse
+Nouvelle priorité (Basse, Normale, Élevée ou 1, 2, 3) : 
+Priorité invalide. La priorité actuelle est conservée.
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+MODIFIER LA PRIORITÉ D'UNE TÂCHE
+
+Identifiant de la tâche : 
+Aucune tâche ne porte l'identifiant 99.
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+LISTE DES TÂCHES
+
+ID     Titre                                                   Priorité   Échéance      Statut
+1      Vérifier la sauvegarde du serveur                       Basse      2030-01-15    Terminée
+2      Mettre à jour le guide utilisateur                      Élevée     Aucune        À faire
+3      Préparer le poste de Marie                              Normale    2030-06-30    À faire
+
+Nombre de tâches : 3
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+Fermeture de TaskFlow. À bientôt.
+
+=== taches.txt ===
+TASKFLOW-V1
+1	Vérifier la sauvegarde du serveur	ELEVEE	2030-01-15	TERMINEE
+2	Mettre à jour le guide utilisateur	BASSE		A_FAIRE
+3	Préparer le poste de Marie	NORMALE	2030-06-30	A_FAIRE
