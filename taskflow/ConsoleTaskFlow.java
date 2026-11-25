@@ -17,6 +17,7 @@ public class ConsoleTaskFlow {
             DateTimeFormatter.ofPattern("uuuu-MM-dd").withResolverStyle(ResolverStyle.STRICT);
 
     private static final Path FICHIER = Paths.get("taches.txt");
+    private static final String MOT_ANNULER = "annuler";
     private static final String FORMAT_ENTETE_TABLEAU = "%-6s %-55s %-10s %-13s %s%n";
     private static final String FORMAT_LIGNE_TABLEAU = "%-6d %-55s %-10s %-13s %s%n";
 
@@ -107,7 +108,7 @@ public class ConsoleTaskFlow {
             System.out.println("\nLe titre ne peut pas être vide.");
             titre = lire("Entrez un titre (ou « annuler » pour abandonner) : ");
         }
-        if (entreeTerminee || titre.trim().equalsIgnoreCase("annuler")) {
+        if (entreeTerminee || titre.trim().equalsIgnoreCase(MOT_ANNULER)) {
             annulerAjout();
             return;
         }
