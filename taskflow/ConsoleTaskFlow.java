@@ -118,23 +118,10 @@ public class ConsoleTaskFlow {
             return;
         }
 
-        System.out.println("\nPriorité : Basse (1), Normale (2) ou Élevée (3)");
-        System.out.println("Appuyez sur Entrée pour choisir Normale.");
-        Priorite priorite = null;
-        while (priorite == null) {
-            String saisie = lire("Votre priorité : ");
-            if (entreeTerminee) {
-                annulerAjout();
-                return;
-            }
-            if (saisie.trim().isEmpty()) {
-                priorite = Priorite.NORMALE;
-            } else {
-                priorite = Priorite.depuisTexte(saisie);
-                if (priorite == null) {
-                    System.out.println("Priorité invalide. Choisissez Basse, Normale ou Élevée (ou 1, 2, 3).");
-                }
-            }
+        Priorite priorite = lirePriorite();
+        if (priorite == null) {
+            annulerAjout();
+            return;
         }
 
         System.out.println("\nÉchéance au format AAAA-MM-JJ");
@@ -179,6 +166,28 @@ public class ConsoleTaskFlow {
             return null;
         }
         return titre;
+    }
+
+    /** Lit la priorité ; retourne null si l'entrée est terminée. */
+    private Priorite lirePriorite() {
+        System.out.println("\nPriorité : Basse (1), Normale (2) ou Élevée (3)");
+        System.out.println("Appuyez sur Entrée pour choisir Normale.");
+        Priorite priorite = null;
+        while (priorite == null) {
+            String saisie = lire("Votre priorité : ");
+            if (entreeTerminee) {
+                return null;
+            }
+            if (saisie.trim().isEmpty()) {
+                priorite = Priorite.NORMALE;
+            } else {
+                priorite = Priorite.depuisTexte(saisie);
+                if (priorite == null) {
+                    System.out.println("Priorité invalide. Choisissez Basse, Normale ou Élevée (ou 1, 2, 3).");
+                }
+            }
+        }
+        return priorite;
     }
 
     private void annulerAjout() {
