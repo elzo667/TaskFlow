@@ -124,26 +124,10 @@ public class ConsoleTaskFlow {
             return;
         }
 
-        System.out.println("\nÉchéance au format AAAA-MM-JJ");
-        System.out.println("Appuyez sur Entrée pour ne pas préciser d'échéance.");
-        LocalDate echeance = null;
-        boolean valide = false;
-        while (!valide) {
-            String saisie = lire("Votre échéance : ").trim();
-            if (entreeTerminee) {
-                annulerAjout();
-                return;
-            }
-            if (saisie.isEmpty()) {
-                valide = true;
-            } else {
-                try {
-                    echeance = LocalDate.parse(saisie, FORMAT_DATE);
-                    valide = true;
-                } catch (DateTimeParseException e) {
-                    System.out.println("Date invalide. Utilisez le format AAAA-MM-JJ avec une date réelle.");
-                }
-            }
+        LocalDate echeance = lireEcheance();
+        if (entreeTerminee) {
+            annulerAjout();
+            return;
         }
 
         Tache t = gestion.ajouter(titre, priorite, echeance);
@@ -188,6 +172,23 @@ public class ConsoleTaskFlow {
             }
         }
         return priorite;
+    }
+
+    /** Lit l'échéance ; retourne null si aucune échéance n'est saisie ou si l'entrée est terminée. */
+    private LocalDate lireEcheance() {
+        System.out.println("\nÉchéance au format AAAA-MM-JJ");
+        System.out.println("Appuyez sur Entrée pour ne pas préciser d'échéance.");
+        while (true) {
+            String saisie = lire("Votre échéance : ").trim();
+            if (entreeTerminee || saisie.isEmpty()) {
+                return null;
+            }
+            try {
+                return LocalDate.parse(saisie, FORMAT_DATE);
+            } catch (DateTimeParseException e) {
+                System.out.println("Date invalide. Utilisez le format AAAA-MM-JJ avec une date réelle.");
+            }
+        }
     }
 
     private void annulerAjout() {
