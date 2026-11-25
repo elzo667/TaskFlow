@@ -30,3 +30,8 @@ taches.txt
 .vscode/
 .DS_Store
 Thumbs.db
+
+target/
+logs/
+*.xlsx
+!.mvn/wrapper/maven-wrapper.jar
