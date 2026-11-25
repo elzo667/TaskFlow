@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Sauvegarde et chargement des tâches dans un fichier texte (UTF-8).
@@ -19,6 +21,7 @@ import java.util.Set;
  * Lignes suivantes : id TAB titre TAB priorité TAB échéance (vide si aucune) TAB statut
  */
 public class StockageTaches {
+    private static final Logger LOG = LoggerFactory.getLogger(StockageTaches.class);
     private static final String ENTETE = "TASKFLOW-V1";
     private static final String SEP = "\t";
     private static final int NB_CHAMPS = 5;
@@ -46,6 +49,7 @@ public class StockageTaches {
                     + SEP + echeance + SEP + tache.getStatut().name());
         }
         Files.write(fichier, lignes, StandardCharsets.UTF_8);
+        LOG.info("Sauvegarde réussie ({} tâches)", taches.size());
     }
 
     public List<Tache> charger(Path fichier) throws IOException, FormatInvalideException {
@@ -62,6 +66,7 @@ public class StockageTaches {
             }
             resultat.add(lireTache(ligne, i + 1, ids));
         }
+        LOG.info("{} tâche(s) chargée(s)", resultat.size());
         return resultat;
     }
 
