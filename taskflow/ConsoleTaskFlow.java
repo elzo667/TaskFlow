@@ -17,6 +17,8 @@ public class ConsoleTaskFlow {
             DateTimeFormatter.ofPattern("uuuu-MM-dd").withResolverStyle(ResolverStyle.STRICT);
 
     private static final Path FICHIER = Paths.get("taches.txt");
+    private static final String FORMAT_ENTETE_TABLEAU = "%-6s %-55s %-10s %-13s %s%n";
+    private static final String FORMAT_LIGNE_TABLEAU = "%-6d %-55s %-10s %-13s %s%n";
 
     private final StockageTaches stockage = new StockageTaches();
     private final Scanner scanner = new Scanner(System.in);
@@ -170,9 +172,9 @@ public class ConsoleTaskFlow {
             return;
         }
         System.out.println("\nLISTE DES TÂCHES\n");
-        System.out.printf("%-6s %-55s %-10s %-13s %s%n", "ID", "Titre", "Priorité", "Échéance", "Statut");
+        System.out.printf(FORMAT_ENTETE_TABLEAU, "ID", "Titre", "Priorité", "Échéance", "Statut");
         for (Tache t : gestion.lister()) {
-            System.out.printf("%-6d %-55s %-10s %-13s %s%n", t.getId(), t.getTitre(),
+            System.out.printf(FORMAT_LIGNE_TABLEAU, t.getId(), t.getTitre(),
                     t.getPriorite().getLibelle(), t.getEcheanceTexte(), t.getStatut().getLibelle());
         }
         System.out.println("\nNombre de tâches : " + gestion.lister().size());
@@ -189,9 +191,9 @@ public class ConsoleTaskFlow {
             return;
         }
         System.out.println("\nTÂCHES À FAIRE\n");
-        System.out.printf("%-6s %-55s %-10s %-13s %s%n", "ID", "Titre", "Priorité", "Échéance", "Statut");
+        System.out.printf(FORMAT_ENTETE_TABLEAU, "ID", "Titre", "Priorité", "Échéance", "Statut");
         for (Tache t : aFaire) {
-            System.out.printf("%-6d %-55s %-10s %-13s %s%n", t.getId(), t.getTitre(),
+            System.out.printf(FORMAT_LIGNE_TABLEAU, t.getId(), t.getTitre(),
                     t.getPriorite().getLibelle(), t.getEcheanceTexte(), t.getStatut().getLibelle());
         }
         System.out.println("\nNombre de tâches à faire : " + aFaire.size());
@@ -217,9 +219,9 @@ public class ConsoleTaskFlow {
             return;
         }
         System.out.println("\nRÉSULTATS DE LA RECHERCHE « " + mot.trim() + " »\n");
-        System.out.printf("%-6s %-55s %-10s %-13s %s%n", "ID", "Titre", "Priorité", "Échéance", "Statut");
+        System.out.printf(FORMAT_ENTETE_TABLEAU, "ID", "Titre", "Priorité", "Échéance", "Statut");
         for (Tache t : resultats) {
-            System.out.printf("%-6d %-55s %-10s %-13s %s%n", t.getId(), t.getTitre(),
+            System.out.printf(FORMAT_LIGNE_TABLEAU, t.getId(), t.getTitre(),
                     t.getPriorite().getLibelle(), t.getEcheanceTexte(), t.getStatut().getLibelle());
         }
         System.out.println("\nNombre de résultats : " + resultats.size());
