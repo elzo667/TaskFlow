@@ -20,11 +20,10 @@ public class ConsoleTaskFlow {
     private static final String CHOIX_A_FAIRE = "7";
     private static final String CHOIX_RECHERCHER = "8";
     private static final String CHOIX_QUITTER = "0";
-    private static final String FORMAT_ENTETE_TABLEAU = "%-6s %-55s %-10s %-13s %s%n";
-    private static final String FORMAT_LIGNE_TABLEAU = "%-6d %-55s %-10s %-13s %s%n";
 
     private final StockageTaches stockage = new StockageTaches();
     private final SaisieConsole entree = new SaisieConsole();
+    private final AffichageConsole affichage = new AffichageConsole();
     private final GestionTaches gestion = new GestionTaches();
 
     public void demarrer() {
@@ -36,7 +35,7 @@ public class ConsoleTaskFlow {
 
         boolean continuer = true;
         while (continuer) {
-            afficherMenu();
+            affichage.afficherMenu();
             String choix = entree.lire("Votre choix : ");
             switch (choix) {
                 case CHOIX_AJOUTER: ajouterTache(); break;
@@ -88,19 +87,6 @@ public class ConsoleTaskFlow {
         }
     }
 
-    private void afficherMenu() {
-        System.out.println();
-        System.out.println("1. Ajouter une tâche");
-        System.out.println("2. Afficher les tâches");
-        System.out.println("3. Marquer une tâche comme terminée");
-        System.out.println("4. Modifier la priorité d'une tâche");
-        System.out.println("5. Gérer l'échéance d'une tâche");
-        System.out.println("6. Sauvegarder les données");
-        System.out.println("7. Afficher seulement les tâches à faire");
-        System.out.println("8. Rechercher une tâche par un mot du titre");
-        System.out.println("0. Quitter");
-        System.out.println();
-    }
 
     private void ajouterTache() {
         System.out.println("\nAJOUTER UNE TÂCHE\n");
@@ -141,11 +127,7 @@ public class ConsoleTaskFlow {
             return;
         }
         System.out.println("\nLISTE DES TÂCHES\n");
-        System.out.printf(FORMAT_ENTETE_TABLEAU, "ID", "Titre", "Priorité", "Échéance", "Statut");
-        for (Tache t : gestion.lister()) {
-            System.out.printf(FORMAT_LIGNE_TABLEAU, t.getId(), t.getTitre(),
-                    t.getPriorite().getLibelle(), t.getEcheanceTexte(), t.getStatut().getLibelle());
-        }
+        affichage.afficherTableau(gestion.lister());
         System.out.println("\nNombre de tâches : " + gestion.lister().size());
     }
 
@@ -160,11 +142,7 @@ public class ConsoleTaskFlow {
             return;
         }
         System.out.println("\nTÂCHES À FAIRE\n");
-        System.out.printf(FORMAT_ENTETE_TABLEAU, "ID", "Titre", "Priorité", "Échéance", "Statut");
-        for (Tache t : aFaire) {
-            System.out.printf(FORMAT_LIGNE_TABLEAU, t.getId(), t.getTitre(),
-                    t.getPriorite().getLibelle(), t.getEcheanceTexte(), t.getStatut().getLibelle());
-        }
+        affichage.afficherTableau(aFaire);
         System.out.println("\nNombre de tâches à faire : " + aFaire.size());
     }
 
@@ -188,11 +166,7 @@ public class ConsoleTaskFlow {
             return;
         }
         System.out.println("\nRÉSULTATS DE LA RECHERCHE « " + mot.trim() + " »\n");
-        System.out.printf(FORMAT_ENTETE_TABLEAU, "ID", "Titre", "Priorité", "Échéance", "Statut");
-        for (Tache t : resultats) {
-            System.out.printf(FORMAT_LIGNE_TABLEAU, t.getId(), t.getTitre(),
-                    t.getPriorite().getLibelle(), t.getEcheanceTexte(), t.getStatut().getLibelle());
-        }
+        affichage.afficherTableau(resultats);
         System.out.println("\nNombre de résultats : " + resultats.size());
     }
 
