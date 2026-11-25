@@ -1,0 +1,35 @@
+7
+8
+1
+Vérifier le Serveur
+
+
+1
+Appeler le client
+3
+2030-03-01
+1
+Redémarrer le serveur mail
+
+
+7
+8
+serveur
+8
+SERVEUR
+8
+
+8
+imprimante
+8
+  client  
+3
+2
+7
+3
+1
+3
+3
+7
+3
+0

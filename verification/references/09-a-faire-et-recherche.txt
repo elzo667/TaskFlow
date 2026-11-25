@@ -1,0 +1,340 @@
+TASKFLOW — Gestion des tâches
+
+Aucun fichier de données trouvé.
+L'application démarre avec une liste vide.
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+Aucune tâche à afficher.
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+Aucune tâche à afficher.
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+AJOUTER UNE TÂCHE
+
+Titre : 
+Priorité : Basse (1), Normale (2) ou Élevée (3)
+Appuyez sur Entrée pour choisir Normale.
+Votre priorité : 
+Échéance au format AAAA-MM-JJ
+Appuyez sur Entrée pour ne pas préciser d'échéance.
+Votre échéance : 
+Tâche ajoutée avec succès.
+
+Identifiant : 1
+Titre       : Vérifier le Serveur
+Priorité    : Normale
+Échéance    : Aucune
+Statut      : À faire
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+AJOUTER UNE TÂCHE
+
+Titre : 
+Priorité : Basse (1), Normale (2) ou Élevée (3)
+Appuyez sur Entrée pour choisir Normale.
+Votre priorité : 
+Échéance au format AAAA-MM-JJ
+Appuyez sur Entrée pour ne pas préciser d'échéance.
+Votre échéance : 
+Tâche ajoutée avec succès.
+
+Identifiant : 2
+Titre       : Appeler le client
+Priorité    : Élevée
+Échéance    : 2030-03-01
+Statut      : À faire
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+AJOUTER UNE TÂCHE
+
+Titre : 
+Priorité : Basse (1), Normale (2) ou Élevée (3)
+Appuyez sur Entrée pour choisir Normale.
+Votre priorité : 
+Échéance au format AAAA-MM-JJ
+Appuyez sur Entrée pour ne pas préciser d'échéance.
+Votre échéance : 
+Tâche ajoutée avec succès.
+
+Identifiant : 3
+Titre       : Redémarrer le serveur mail
+Priorité    : Normale
+Échéance    : Aucune
+Statut      : À faire
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+TÂCHES À FAIRE
+
+ID     Titre                                                   Priorité   Échéance      Statut
+1      Vérifier le Serveur                                     Normale    Aucune        À faire
+2      Appeler le client                                       Élevée     2030-03-01    À faire
+3      Redémarrer le serveur mail                              Normale    Aucune        À faire
+
+Nombre de tâches à faire : 3
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+RECHERCHER UNE TÂCHE PAR UN MOT DU TITRE
+
+Mot à rechercher : 
+RÉSULTATS DE LA RECHERCHE « serveur »
+
+ID     Titre                                                   Priorité   Échéance      Statut
+1      Vérifier le Serveur                                     Normale    Aucune        À faire
+3      Redémarrer le serveur mail                              Normale    Aucune        À faire
+
+Nombre de résultats : 2
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+RECHERCHER UNE TÂCHE PAR UN MOT DU TITRE
+
+Mot à rechercher : 
+RÉSULTATS DE LA RECHERCHE « SERVEUR »
+
+ID     Titre                                                   Priorité   Échéance      Statut
+1      Vérifier le Serveur                                     Normale    Aucune        À faire
+3      Redémarrer le serveur mail                              Normale    Aucune        À faire
+
+Nombre de résultats : 2
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+RECHERCHER UNE TÂCHE PAR UN MOT DU TITRE
+
+Mot à rechercher : 
+Le mot à rechercher ne peut pas être vide.
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+RECHERCHER UNE TÂCHE PAR UN MOT DU TITRE
+
+Mot à rechercher : 
+Aucune tâche ne contient « imprimante » dans son titre.
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+RECHERCHER UNE TÂCHE PAR UN MOT DU TITRE
+
+Mot à rechercher : 
+RÉSULTATS DE LA RECHERCHE « client »
+
+ID     Titre                                                   Priorité   Échéance      Statut
+2      Appeler le client                                       Élevée     2030-03-01    À faire
+
+Nombre de résultats : 1
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+MARQUER UNE TÂCHE COMME TERMINÉE
+
+Identifiant de la tâche : 
+La tâche « Appeler le client » est maintenant terminée.
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+TÂCHES À FAIRE
+
+ID     Titre                                                   Priorité   Échéance      Statut
+1      Vérifier le Serveur                                     Normale    Aucune        À faire
+3      Redémarrer le serveur mail                              Normale    Aucune        À faire
+
+Nombre de tâches à faire : 2
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+MARQUER UNE TÂCHE COMME TERMINÉE
+
+Identifiant de la tâche : 
+La tâche « Vérifier le Serveur » est maintenant terminée.
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+MARQUER UNE TÂCHE COMME TERMINÉE
+
+Identifiant de la tâche : 
+La tâche « Redémarrer le serveur mail » est maintenant terminée.
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+Aucune tâche à faire. Toutes les tâches sont terminées.
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+MARQUER UNE TÂCHE COMME TERMINÉE
+
+Identifiant de la tâche : 
+Aucune tâche ne porte l'identifiant 0.
+
+1. Ajouter une tâche
+2. Afficher les tâches
+3. Marquer une tâche comme terminée
+4. Modifier la priorité d'une tâche
+5. Gérer l'échéance d'une tâche
+6. Sauvegarder les données
+7. Afficher seulement les tâches à faire
+8. Rechercher une tâche par un mot du titre
+0. Quitter
+
+Votre choix : 
+Fermeture de TaskFlow. À bientôt.

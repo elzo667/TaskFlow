@@ -1,0 +1,9 @@
+TASKFLOW — Gestion des tâches
+
+Le fichier taches.txt est illisible ou mal formé.
+Détail : en-tête manquant ou incorrect
+Le fichier n'a pas été modifié. Corrigez-le ou supprimez-le, puis relancez TaskFlow.
+
+=== taches.txt ===
+MAUVAIS
+1	A	NORMALE		A_FAIRE

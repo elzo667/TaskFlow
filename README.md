@@ -158,3 +158,13 @@ TASKFLOW-V1
 - Il n'est pas possible de supprimer une tâche ni de modifier son titre (hors du périmètre du mini-projet 1).
 - La recherche par titre (option 8) ignore les majuscules mais pas les accents : « verifier » ne trouve pas « Vérifier ».
 - Les anomalies relevées pendant les vérifications sont suivies dans les [Issues](https://github.com/elzo667/TaskFlow/issues) et dans [docs/verification.md](docs/verification.md).
+
+## Vérification
+
+Les scénarios de `verification/scenarios/` rejouent des saisies clavier et comparent la sortie aux références de la v1.0.0 (`verification/references/`). Chaque scénario part d'un état connu : fichier absent, ou copie d'un fichier de `verification/donnees/`.
+
+    javac -encoding UTF-8 -d out taskflow/*.java
+    export TASKFLOW_CMD="java -Dfile.encoding=UTF-8 -Dstdout.encoding=UTF-8 -Dstdin.encoding=UTF-8 -cp $PWD/out taskflow.Main"
+    ./verification/rejouer.sh
+
+Résultat attendu : `10/10 scénarios identiques aux références`, aucune ligne `FAIL`. À utiliser après chaque refactoring.
