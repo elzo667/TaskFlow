@@ -1,0 +1,10 @@
+TASKFLOW — Gestion des tâches
+
+Le fichier taches.txt est illisible ou mal formé.
+Détail : ligne 3 : identifiant invalide ou en double
+Le fichier n'a pas été modifié. Corrigez-le ou supprimez-le, puis relancez TaskFlow.
+
+=== taches.txt ===
+TASKFLOW-V1
+1	A	NORMALE		A_FAIRE
+1	B	BASSE		A_FAIRE
