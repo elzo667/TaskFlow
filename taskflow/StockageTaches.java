@@ -89,14 +89,7 @@ public class StockageTaches {
         } catch (IllegalArgumentException e) {
             throw new FormatInvalideException("ligne " + numero + " : priorité invalide");
         }
-        LocalDate echeance = null;
-        if (!champs[IDX_ECHEANCE].isEmpty()) {
-            try {
-                echeance = LocalDate.parse(champs[IDX_ECHEANCE], FORMAT_DATE);
-            } catch (DateTimeParseException e) {
-                throw new FormatInvalideException("ligne " + numero + " : échéance invalide");
-            }
-        }
+        LocalDate echeance = lireEcheance(champs[IDX_ECHEANCE], numero);
         Statut statut;
         try {
             statut = Statut.valueOf(champs[IDX_STATUT]);
@@ -106,5 +99,17 @@ public class StockageTaches {
         Tache tache = new Tache(id, champs[IDX_TITRE], priorite, echeance);
         tache.setStatut(statut);
         return tache;
+    }
+
+    /** Convertit le champ échéance (vide = aucune) ; lève une exception si la date est invalide. */
+    private LocalDate lireEcheance(String texte, int numero) throws FormatInvalideException {
+        if (texte.isEmpty()) {
+            return null;
+        }
+        try {
+            return LocalDate.parse(texte, FORMAT_DATE);
+        } catch (DateTimeParseException e) {
+            throw new FormatInvalideException("ligne " + numero + " : échéance invalide");
+        }
     }
 }
