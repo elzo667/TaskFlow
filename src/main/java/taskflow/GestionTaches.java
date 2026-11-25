@@ -5,9 +5,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /** Logique de gestion des tâches (sans entrée/sortie console). */
 public class GestionTaches {
+    private static final Logger LOG = LoggerFactory.getLogger(GestionTaches.class);
     private final List<Tache> taches = new ArrayList<>();
     private int prochainId = 1;
 
@@ -18,6 +21,7 @@ public class GestionTaches {
         }
         Tache tache = new Tache(prochainId++, titre.trim().replace('\t', ' '), priorite, echeance);
         taches.add(tache);
+        LOG.info("Tâche {} ajoutée", tache.getId());
         return tache;
     }
 
