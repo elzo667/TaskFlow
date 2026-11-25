@@ -327,6 +327,18 @@ public class ConsoleTaskFlow {
         System.out.println("\nL'échéance a été retirée. Échéance actuelle : Aucune.");
     }
 
+    private Tache demanderTache() {
+        Integer id = lireIdentifiant();
+        if (id == null) {
+            return null;
+        }
+        Tache tache = gestion.trouver(id);
+        if (tache == null) {
+            System.out.println("\nAucune tâche ne porte l'identifiant " + id + ".");
+        }
+        return tache;
+    }
+
     private Integer lireIdentifiant() {
         String saisie = lire("Identifiant de la tâche : ").trim();
         try {
