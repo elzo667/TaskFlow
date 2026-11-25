@@ -239,30 +239,22 @@ public class ConsoleTaskFlow {
 
     private void terminerTache() {
         System.out.println("\nMARQUER UNE TÂCHE COMME TERMINÉE\n");
-        Integer id = lireIdentifiant();
-        if (id == null) {
+        Tache t = demanderTache();
+        if (t == null) {
             return;
         }
-        Tache t = gestion.trouver(id);
-        if (t == null) {
-            System.out.println("\nAucune tâche ne porte l'identifiant " + id + ".");
-        } else if (t.getStatut() == Statut.TERMINEE) {
+        if (t.getStatut() == Statut.TERMINEE) {
             System.out.println("\nLa tâche « " + t.getTitre() + " » est déjà terminée.");
         } else {
-            gestion.terminer(id);
+            gestion.terminer(t.getId());
             System.out.println("\nLa tâche « " + t.getTitre() + " » est maintenant terminée.");
         }
     }
 
     private void modifierPriorite() {
         System.out.println("\nMODIFIER LA PRIORITÉ D'UNE TÂCHE\n");
-        Integer id = lireIdentifiant();
-        if (id == null) {
-            return;
-        }
-        Tache t = gestion.trouver(id);
+        Tache t = demanderTache();
         if (t == null) {
-            System.out.println("\nAucune tâche ne porte l'identifiant " + id + ".");
             return;
         }
         System.out.println("\nPriorité actuelle : " + t.getPriorite().getLibelle());
@@ -272,20 +264,15 @@ public class ConsoleTaskFlow {
             System.out.println("\nPriorité invalide. La priorité actuelle est conservée.");
             return;
         }
-        gestion.modifierPriorite(id, nouvelle);
+        gestion.modifierPriorite(t.getId(), nouvelle);
         System.out.println("\nLa priorité de la tâche « " + t.getTitre()
                 + " » est maintenant : " + nouvelle.getLibelle() + ".");
     }
 
     private void gererEcheance() {
         System.out.println("\nGÉRER L'ÉCHÉANCE D'UNE TÂCHE\n");
-        Integer id = lireIdentifiant();
-        if (id == null) {
-            return;
-        }
-        Tache t = gestion.trouver(id);
+        Tache t = demanderTache();
         if (t == null) {
-            System.out.println("\nAucune tâche ne porte l'identifiant " + id + ".");
             return;
         }
         System.out.println("\nTâche : " + t.getTitre());
@@ -325,6 +312,18 @@ public class ConsoleTaskFlow {
         }
         gestion.retirerEcheance(t.getId());
         System.out.println("\nL'échéance a été retirée. Échéance actuelle : Aucune.");
+    }
+
+    private Tache demanderTache() {
+        Integer id = lireIdentifiant();
+        if (id == null) {
+            return null;
+        }
+        Tache tache = gestion.trouver(id);
+        if (tache == null) {
+            System.out.println("\nAucune tâche ne porte l'identifiant " + id + ".");
+        }
+        return tache;
     }
 
     private Integer lireIdentifiant() {
