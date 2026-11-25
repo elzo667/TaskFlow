@@ -112,24 +112,55 @@ public class ConsoleTaskFlow {
 
     private void ajouterTache() {
         System.out.println("\nAJOUTER UNE TÂCHE\n");
+        String titre = lireTitre();
+        if (titre == null) {
+            annulerAjout();
+            return;
+        }
+
+        Priorite priorite = lirePriorite();
+        if (priorite == null) {
+            annulerAjout();
+            return;
+        }
+
+        LocalDate echeance = lireEcheance();
+        if (entreeTerminee) {
+            annulerAjout();
+            return;
+        }
+
+        Tache t = gestion.ajouter(titre, priorite, echeance);
+        System.out.println("\nTâche ajoutée avec succès.\n");
+        System.out.println("Identifiant : " + t.getId());
+        System.out.println("Titre       : " + t.getTitre());
+        System.out.println("Priorité    : " + t.getPriorite().getLibelle());
+        System.out.println("Échéance    : " + t.getEcheanceTexte());
+        System.out.println("Statut      : " + t.getStatut().getLibelle());
+    }
+
+    /** Lit le titre ; retourne null si l'utilisateur annule ou si l'entrée est terminée. */
+    private String lireTitre() {
         String titre = lire("Titre : ");
         while (titre.trim().isEmpty() && !entreeTerminee) {
             System.out.println("\nLe titre ne peut pas être vide.");
             titre = lire("Entrez un titre (ou « annuler » pour abandonner) : ");
         }
         if (entreeTerminee || titre.trim().equalsIgnoreCase(MOT_ANNULER)) {
-            annulerAjout();
-            return;
+            return null;
         }
+        return titre;
+    }
 
+    /** Lit la priorité ; retourne null si l'entrée est terminée. */
+    private Priorite lirePriorite() {
         System.out.println("\nPriorité : Basse (1), Normale (2) ou Élevée (3)");
         System.out.println("Appuyez sur Entrée pour choisir Normale.");
         Priorite priorite = null;
         while (priorite == null) {
             String saisie = lire("Votre priorité : ");
             if (entreeTerminee) {
-                annulerAjout();
-                return;
+                return null;
             }
             if (saisie.trim().isEmpty()) {
                 priorite = Priorite.NORMALE;
@@ -140,36 +171,24 @@ public class ConsoleTaskFlow {
                 }
             }
         }
+        return priorite;
+    }
 
+    /** Lit l'échéance ; retourne null si aucune échéance n'est saisie ou si l'entrée est terminée. */
+    private LocalDate lireEcheance() {
         System.out.println("\nÉchéance au format AAAA-MM-JJ");
         System.out.println("Appuyez sur Entrée pour ne pas préciser d'échéance.");
-        LocalDate echeance = null;
-        boolean valide = false;
-        while (!valide) {
+        while (true) {
             String saisie = lire("Votre échéance : ").trim();
-            if (entreeTerminee) {
-                annulerAjout();
-                return;
+            if (entreeTerminee || saisie.isEmpty()) {
+                return null;
             }
-            if (saisie.isEmpty()) {
-                valide = true;
-            } else {
-                try {
-                    echeance = LocalDate.parse(saisie, FORMAT_DATE);
-                    valide = true;
-                } catch (DateTimeParseException e) {
-                    System.out.println("Date invalide. Utilisez le format AAAA-MM-JJ avec une date réelle.");
-                }
+            try {
+                return LocalDate.parse(saisie, FORMAT_DATE);
+            } catch (DateTimeParseException e) {
+                System.out.println("Date invalide. Utilisez le format AAAA-MM-JJ avec une date réelle.");
             }
         }
-
-        Tache t = gestion.ajouter(titre, priorite, echeance);
-        System.out.println("\nTâche ajoutée avec succès.\n");
-        System.out.println("Identifiant : " + t.getId());
-        System.out.println("Titre       : " + t.getTitre());
-        System.out.println("Priorité    : " + t.getPriorite().getLibelle());
-        System.out.println("Échéance    : " + t.getEcheanceTexte());
-        System.out.println("Statut      : " + t.getStatut().getLibelle());
     }
 
     private void annulerAjout() {
