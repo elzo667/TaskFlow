@@ -55,43 +55,43 @@ public class StockageTaches {
                 continue;
             }
             int numero = i + 1;
-            String[] c = ligne.split(SEP, -1);
-            if (c.length != 5) {
+            String[] champs = ligne.split(SEP, -1);
+            if (champs.length != 5) {
                 throw new FormatInvalideException("ligne " + numero + " : 5 champs attendus");
             }
             int id;
             try {
-                id = Integer.parseInt(c[0]);
+                id = Integer.parseInt(champs[0]);
             } catch (NumberFormatException e) {
                 throw new FormatInvalideException("ligne " + numero + " : identifiant invalide");
             }
             if (id < 1 || !ids.add(id)) {
                 throw new FormatInvalideException("ligne " + numero + " : identifiant invalide ou en double");
             }
-            if (c[1].trim().isEmpty()) {
+            if (champs[1].trim().isEmpty()) {
                 throw new FormatInvalideException("ligne " + numero + " : titre vide");
             }
             Priorite priorite;
             try {
-                priorite = Priorite.valueOf(c[2]);
+                priorite = Priorite.valueOf(champs[2]);
             } catch (IllegalArgumentException e) {
                 throw new FormatInvalideException("ligne " + numero + " : priorité invalide");
             }
             LocalDate echeance = null;
-            if (!c[3].isEmpty()) {
+            if (!champs[3].isEmpty()) {
                 try {
-                    echeance = LocalDate.parse(c[3], FORMAT_DATE);
+                    echeance = LocalDate.parse(champs[3], FORMAT_DATE);
                 } catch (DateTimeParseException e) {
                     throw new FormatInvalideException("ligne " + numero + " : échéance invalide");
                 }
             }
             Statut statut;
             try {
-                statut = Statut.valueOf(c[4]);
+                statut = Statut.valueOf(champs[4]);
             } catch (IllegalArgumentException e) {
                 throw new FormatInvalideException("ligne " + numero + " : statut invalide");
             }
-            Tache t = new Tache(id, c[1], priorite, echeance);
+            Tache t = new Tache(id, champs[1], priorite, echeance);
             t.setStatut(statut);
             resultat.add(t);
         }
